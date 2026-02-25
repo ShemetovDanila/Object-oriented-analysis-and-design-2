@@ -5,65 +5,52 @@ namespace WinFormsApp1
 {
     public class Order
     {
-        public List<Pizza> Pizzas { get; set; }
-        public DateTime OrderTime { get; set; }
+        public List<OrderItem> Items { get; set; }
 
         public Order()
         {
-            Pizzas = new List<Pizza>();
-            OrderTime = DateTime.Now;
+            Items = new List<OrderItem>();
         }
 
         public void AddPizza(Pizza pizza)
         {
-            Pizzas.Add(pizza);
+            foreach (OrderItem item in Items)
+            {
+                if (item.Pizza.IsSameAs(pizza))
+                {
+                    item.Quantity++;
+                    item.UpdateQuantityDisplay();
+                    return;
+                }
+            }
+
+            OrderItem newItem = new OrderItem(pizza, 1);
+            Items.Add(newItem);
+        }
+
+        public void RemoveItem(OrderItem item)
+        {
+            Items.Remove(item);
         }
 
         public int GetTotalSum()
         {
             int sum = 0;
-            foreach (Pizza pizza in Pizzas)
+            foreach (OrderItem item in Items)
             {
-                sum += pizza.GetPrice();
+                sum += item.GetTotalPrice();
             }
             return sum;
         }
 
-        public string GetOrderDescription()
+        public int GetTotalPizzasCount()
         {
-            int margaritaCount = 0;
-            int pepperoniCount = 0;
-            int countryCount = 0;
-
-            foreach (Pizza pizza in Pizzas)
+            int count = 0;
+            foreach (OrderItem item in Items)
             {
-                if (pizza.Name == "Маргарита") margaritaCount++;
-                else if (pizza.Name == "Пепперони") pepperoniCount++;
-                else if (pizza.Name == "Кантри") countryCount++;
+                count += item.Quantity;
             }
-
-            string description = $"Заказ на {GetTotalSum()} руб.: ";
-            bool first = true;
-
-            if (margaritaCount > 0)
-            {
-                description += $"{margaritaCount}x Маргарита";
-                first = false;
-            }
-            if (pepperoniCount > 0)
-            {
-                if (!first) description += ", ";
-                description += $"{pepperoniCount}x Пепперони";
-                first = false;
-            }
-            if (countryCount > 0)
-            {
-                if (!first) description += ", ";
-                description += $"{countryCount}x Кантри";
-            }
-
-            description += $" ({OrderTime.ToShortTimeString()})";
-            return description;
+            return count;
         }
     }
 }
