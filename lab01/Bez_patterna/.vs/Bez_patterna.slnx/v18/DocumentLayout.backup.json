@@ -3,44 +3,60 @@
   "WorkspaceRootPath": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\Bez_patterna\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D7244390-5718-40A3-B825-22969E404223}|Bez_patterna\\Bez_patterna.csproj|d:\\ooap\\object-oriented-analysis-and-design-2\\lab01\\bez_patterna\\bez_patterna\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D7244390-5718-40A3-B825-22969E404223}|Bez_patterna\\Bez_patterna.csproj|solutionrelative:bez_patterna\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{66105FF4-9484-4F99-466D-340E405B10BD}|Bez_patterna\\Bez_patterna.csproj|d:\\ooap\\object-oriented-analysis-and-design-2\\lab01\\bez_patterna\\bez_patterna\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{66105FF4-9484-4F99-466D-340E405B10BD}|Bez_patterna\\Bez_patterna.csproj|solutionrelative:bez_patterna\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D7244390-5718-40A3-B825-22969E404223}|Bez_patterna\\Bez_patterna.csproj|d:\\ooap\\object-oriented-analysis-and-design-2\\lab01\\bez_patterna\\bez_patterna\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D7244390-5718-40A3-B825-22969E404223}|Bez_patterna\\Bez_patterna.csproj|solutionrelative:bez_patterna\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{66105FF4-9484-4F99-466D-340E405B10BD}|Bez_patterna\\Bez_patterna.csproj|d:\\ooap\\object-oriented-analysis-and-design-2\\lab01\\bez_patterna\\bez_patterna\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{66105FF4-9484-4F99-466D-340E405B10BD}|Bez_patterna\\Bez_patterna.csproj|solutionrelative:bez_patterna\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D7244390-5718-40A3-B825-22969E404223}|Bez_patterna\\Bez_patterna.csproj|d:\\ooap\\object-oriented-analysis-and-design-2\\lab01\\bez_patterna\\bez_patterna\\pizzamenuitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D7244390-5718-40A3-B825-22969E404223}|Bez_patterna\\Bez_patterna.csproj|solutionrelative:bez_patterna\\pizzamenuitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{66105FF4-9484-4F99-466D-340E405B10BD}|Bez_patterna\\Bez_patterna.csproj|d:\\ooap\\object-oriented-analysis-and-design-2\\lab01\\bez_patterna\\bez_patterna\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{66105FF4-9484-4F99-466D-340E405B10BD}|Bez_patterna\\Bez_patterna.csproj|solutionrelative:bez_patterna\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D7244390-5718-40A3-B825-22969E404223}|Bez_patterna\\Bez_patterna.csproj|d:\\ooap\\object-oriented-analysis-and-design-2\\lab01\\bez_patterna\\bez_patterna\\pizza.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D7244390-5718-40A3-B825-22969E404223}|Bez_patterna\\Bez_patterna.csproj|solutionrelative:bez_patterna\\pizza.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{66105FF4-9484-4F99-466D-340E405B10BD}|Bez_patterna\\Bez_patterna.csproj|d:\\ooap\\object-oriented-analysis-and-design-2\\lab01\\bez_patterna\\bez_patterna\\pizza.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{66105FF4-9484-4F99-466D-340E405B10BD}|Bez_patterna\\Bez_patterna.csproj|solutionrelative:bez_patterna\\pizza.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D7244390-5718-40A3-B825-22969E404223}|Bez_patterna\\Bez_patterna.csproj|d:\\ooap\\object-oriented-analysis-and-design-2\\lab01\\bez_patterna\\bez_patterna\\orderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D7244390-5718-40A3-B825-22969E404223}|Bez_patterna\\Bez_patterna.csproj|solutionrelative:bez_patterna\\orderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{66105FF4-9484-4F99-466D-340E405B10BD}|Bez_patterna\\Bez_patterna.csproj|d:\\ooap\\object-oriented-analysis-and-design-2\\lab01\\bez_patterna\\bez_patterna\\form2.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{66105FF4-9484-4F99-466D-340E405B10BD}|Bez_patterna\\Bez_patterna.csproj|solutionrelative:bez_patterna\\form2.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D7244390-5718-40A3-B825-22969E404223}|Bez_patterna\\Bez_patterna.csproj|d:\\ooap\\object-oriented-analysis-and-design-2\\lab01\\bez_patterna\\bez_patterna\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D7244390-5718-40A3-B825-22969E404223}|Bez_patterna\\Bez_patterna.csproj|solutionrelative:bez_patterna\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{66105FF4-9484-4F99-466D-340E405B10BD}|Bez_patterna\\Bez_patterna.csproj|d:\\ooap\\object-oriented-analysis-and-design-2\\lab01\\bez_patterna\\bez_patterna\\form2.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}",
+      "RelativeMoniker": "D:0:0:{66105FF4-9484-4F99-466D-340E405B10BD}|Bez_patterna\\Bez_patterna.csproj|solutionrelative:bez_patterna\\form2.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D7244390-5718-40A3-B825-22969E404223}|Bez_patterna\\Bez_patterna.csproj|d:\\ooap\\object-oriented-analysis-and-design-2\\lab01\\bez_patterna\\bez_patterna\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D7244390-5718-40A3-B825-22969E404223}|Bez_patterna\\Bez_patterna.csproj|solutionrelative:bez_patterna\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{66105FF4-9484-4F99-466D-340E405B10BD}|Bez_patterna\\Bez_patterna.csproj|d:\\ooap\\object-oriented-analysis-and-design-2\\lab01\\bez_patterna\\bez_patterna\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{66105FF4-9484-4F99-466D-340E405B10BD}|Bez_patterna\\Bez_patterna.csproj|solutionrelative:bez_patterna\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D7244390-5718-40A3-B825-22969E404223}|Bez_patterna\\Bez_patterna.csproj|d:\\ooap\\object-oriented-analysis-and-design-2\\lab01\\bez_patterna\\bez_patterna\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{D7244390-5718-40A3-B825-22969E404223}|Bez_patterna\\Bez_patterna.csproj|solutionrelative:bez_patterna\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{66105FF4-9484-4F99-466D-340E405B10BD}|Bez_patterna\\Bez_patterna.csproj|d:\\ooap\\object-oriented-analysis-and-design-2\\lab01\\bez_patterna\\bez_patterna\\orderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{66105FF4-9484-4F99-466D-340E405B10BD}|Bez_patterna\\Bez_patterna.csproj|solutionrelative:bez_patterna\\orderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D7244390-5718-40A3-B825-22969E404223}|Bez_patterna\\Bez_patterna.csproj|d:\\ooap\\object-oriented-analysis-and-design-2\\lab01\\bez_patterna\\bez_patterna\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{66105FF4-9484-4F99-466D-340E405B10BD}|Bez_patterna\\Bez_patterna.csproj|d:\\ooap\\object-oriented-analysis-and-design-2\\lab01\\bez_patterna\\bez_patterna\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{66105FF4-9484-4F99-466D-340E405B10BD}|Bez_patterna\\Bez_patterna.csproj|solutionrelative:bez_patterna\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{66105FF4-9484-4F99-466D-340E405B10BD}|Bez_patterna\\Bez_patterna.csproj|d:\\ooap\\object-oriented-analysis-and-design-2\\lab01\\bez_patterna\\bez_patterna\\pizzamenuitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{66105FF4-9484-4F99-466D-340E405B10BD}|Bez_patterna\\Bez_patterna.csproj|solutionrelative:bez_patterna\\pizzamenuitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{66105FF4-9484-4F99-466D-340E405B10BD}|Bez_patterna\\Bez_patterna.csproj|d:\\ooap\\object-oriented-analysis-and-design-2\\lab01\\bez_patterna\\bez_patterna\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{66105FF4-9484-4F99-466D-340E405B10BD}|Bez_patterna\\Bez_patterna.csproj|solutionrelative:bez_patterna\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{66105FF4-9484-4F99-466D-340E405B10BD}|Bez_patterna\\Bez_patterna.csproj|d:\\ooap\\object-oriented-analysis-and-design-2\\lab01\\bez_patterna\\bez_patterna\\form1.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}",
+      "RelativeMoniker": "D:0:0:{66105FF4-9484-4F99-466D-340E405B10BD}|Bez_patterna\\Bez_patterna.csproj|solutionrelative:bez_patterna\\form1.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D7244390-5718-40A3-B825-22969E404223}|Bez_patterna\\Bez_patterna.csproj|D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\Bez_patterna\\bez_patterna\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{D7244390-5718-40A3-B825-22969E404223}|Bez_patterna\\Bez_patterna.csproj|solutionrelative:bez_patterna\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D7244390-5718-40A3-B825-22969E404223}|Bez_patterna\\Bez_patterna.csproj|d:\\ooap\\object-oriented-analysis-and-design-2\\lab01\\bez_patterna\\bez_patterna\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D7244390-5718-40A3-B825-22969E404223}|Bez_patterna\\Bez_patterna.csproj|solutionrelative:bez_patterna\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D7244390-5718-40A3-B825-22969E404223}|Bez_patterna\\Bez_patterna.csproj|D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\Bez_patterna\\bez_patterna\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{D7244390-5718-40A3-B825-22969E404223}|Bez_patterna\\Bez_patterna.csproj|solutionrelative:bez_patterna\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,89 +66,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "PizzaMenuItem.cs",
-              "DocumentMoniker": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\Bez_patterna\\Bez_patterna\\PizzaMenuItem.cs",
-              "RelativeDocumentMoniker": "Bez_patterna\\PizzaMenuItem.cs",
-              "ToolTip": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\Bez_patterna\\Bez_patterna\\PizzaMenuItem.cs",
-              "RelativeToolTip": "Bez_patterna\\PizzaMenuItem.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIsAAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-25T15:05:44.204Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "OrderItem.cs",
-              "DocumentMoniker": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\Bez_patterna\\Bez_patterna\\OrderItem.cs",
-              "RelativeDocumentMoniker": "Bez_patterna\\OrderItem.cs",
-              "ToolTip": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\Bez_patterna\\Bez_patterna\\OrderItem.cs",
-              "RelativeToolTip": "Bez_patterna\\OrderItem.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAWAAAAAAAAAA==",
+              "Title": "Form2.Designer.cs",
+              "DocumentMoniker": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\Bez_patterna\\Bez_patterna\\Form2.Designer.cs",
+              "RelativeDocumentMoniker": "Bez_patterna\\Form2.Designer.cs",
+              "ToolTip": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\Bez_patterna\\Bez_patterna\\Form2.Designer.cs",
+              "RelativeToolTip": "Bez_patterna\\Form2.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-25T15:07:56.903Z",
+              "WhenOpened": "2026-02-25T16:03:25.209Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Pizza.cs",
-              "DocumentMoniker": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\Bez_patterna\\Bez_patterna\\Pizza.cs",
-              "RelativeDocumentMoniker": "Bez_patterna\\Pizza.cs",
-              "ToolTip": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\Bez_patterna\\Bez_patterna\\Pizza.cs",
-              "RelativeToolTip": "Bez_patterna\\Pizza.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-25T15:07:27.977Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\Bez_patterna\\Bez_patterna\\Program.cs",
-              "RelativeDocumentMoniker": "Bez_patterna\\Program.cs",
-              "ToolTip": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\Bez_patterna\\Bez_patterna\\Program.cs",
-              "RelativeToolTip": "Bez_patterna\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-25T15:07:05.889Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Form1.cs",
-              "DocumentMoniker": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\Bez_patterna\\Bez_patterna\\Form1.cs",
-              "RelativeDocumentMoniker": "Bez_patterna\\Form1.cs",
-              "ToolTip": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\Bez_patterna\\Bez_patterna\\Form1.cs",
-              "RelativeToolTip": "Bez_patterna\\Form1.cs",
-              "ViewState": "AgIAACEBAAAAAAAAAADwvyoBAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-25T15:09:26.234Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Order.cs",
-              "DocumentMoniker": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\Bez_patterna\\Bez_patterna\\Order.cs",
-              "RelativeDocumentMoniker": "Bez_patterna\\Order.cs",
-              "ToolTip": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\Bez_patterna\\Bez_patterna\\Order.cs",
-              "RelativeToolTip": "Bez_patterna\\Order.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-25T15:08:57.887Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 2,
               "Title": "Form1.Designer.cs",
               "DocumentMoniker": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\Bez_patterna\\Bez_patterna\\Form1.Designer.cs",
               "RelativeDocumentMoniker": "Bez_patterna\\Form1.Designer.cs",
@@ -145,40 +96,152 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Form2.cs",
-              "DocumentMoniker": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\Bez_patterna\\Bez_patterna\\Form2.cs",
-              "RelativeDocumentMoniker": "Bez_patterna\\Form2.cs",
-              "ToolTip": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\Bez_patterna\\Bez_patterna\\Form2.cs",
-              "RelativeToolTip": "Bez_patterna\\Form2.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAgAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\Bez_patterna\\Bez_patterna\\Form1.cs",
+              "RelativeDocumentMoniker": "Bez_patterna\\Form1.cs",
+              "ToolTip": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\Bez_patterna\\Bez_patterna\\Form1.cs",
+              "RelativeToolTip": "Bez_patterna\\Form1.cs",
+              "ViewState": "AgIAAIsAAAAAAAAAAAAQwJ8AAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-25T15:10:09.656Z",
+              "WhenOpened": "2026-02-25T15:09:26.234Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Form2.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "DocumentMoniker": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\Bez_patterna\\Bez_patterna\\Form2.cs",
-              "RelativeDocumentMoniker": "Bez_patterna\\Form2.cs",
-              "ToolTip": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\Bez_patterna\\Bez_patterna\\Form2.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "RelativeToolTip": "Bez_patterna\\Form2.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentIndex": 3,
+              "Title": "Pizza.cs",
+              "DocumentMoniker": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\Bez_patterna\\Bez_patterna\\Pizza.cs",
+              "RelativeDocumentMoniker": "Bez_patterna\\Pizza.cs",
+              "ToolTip": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\Bez_patterna\\Bez_patterna\\Pizza.cs",
+              "RelativeToolTip": "Bez_patterna\\Pizza.cs",
+              "ViewState": "AgIAAEUAAAAAAAAAAAAYwF0AAABMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-25T15:10:06.91Z",
-              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
+              "WhenOpened": "2026-02-25T15:07:27.977Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 1,
               "Title": "Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "DocumentMoniker": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\Bez_patterna\\Bez_patterna\\Form1.cs",
               "RelativeDocumentMoniker": "Bez_patterna\\Form1.cs",
               "ToolTip": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\Bez_patterna\\Bez_patterna\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "RelativeToolTip": "Bez_patterna\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-25T15:03:48.424Z",
+              "WhenOpened": "2026-02-25T16:02:58.163Z",
               "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Form2.resx",
+              "DocumentMoniker": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\Bez_patterna\\Bez_patterna\\Form2.resx",
+              "RelativeDocumentMoniker": "Bez_patterna\\Form2.resx",
+              "ToolTip": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\Bez_patterna\\Bez_patterna\\Form2.resx",
+              "RelativeToolTip": "Bez_patterna\\Form2.resx",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
+              "WhenOpened": "2026-02-25T16:04:34.226Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Order.cs",
+              "DocumentMoniker": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\Bez_patterna\\Bez_patterna\\Order.cs",
+              "RelativeDocumentMoniker": "Bez_patterna\\Order.cs",
+              "ToolTip": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\Bez_patterna\\Bez_patterna\\Order.cs",
+              "RelativeToolTip": "Bez_patterna\\Order.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T15:08:57.887Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "OrderItem.cs",
+              "DocumentMoniker": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\Bez_patterna\\Bez_patterna\\OrderItem.cs",
+              "RelativeDocumentMoniker": "Bez_patterna\\OrderItem.cs",
+              "ToolTip": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\Bez_patterna\\Bez_patterna\\OrderItem.cs",
+              "RelativeToolTip": "Bez_patterna\\OrderItem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T15:07:56.903Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "PizzaMenuItem.cs",
+              "DocumentMoniker": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\Bez_patterna\\Bez_patterna\\PizzaMenuItem.cs",
+              "RelativeDocumentMoniker": "Bez_patterna\\PizzaMenuItem.cs",
+              "ToolTip": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\Bez_patterna\\Bez_patterna\\PizzaMenuItem.cs",
+              "RelativeToolTip": "Bez_patterna\\PizzaMenuItem.cs",
+              "ViewState": "AgIAAIwAAAAAAAAAAAAswIsAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T15:05:44.204Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Form2.cs",
+              "DocumentMoniker": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\Bez_patterna\\Bez_patterna\\Form2.cs",
+              "RelativeDocumentMoniker": "Bez_patterna\\Form2.cs",
+              "ToolTip": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\Bez_patterna\\Bez_patterna\\Form2.cs",
+              "RelativeToolTip": "Bez_patterna\\Form2.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAYwAYAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T15:10:09.656Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\Bez_patterna\\Bez_patterna\\Program.cs",
+              "RelativeDocumentMoniker": "Bez_patterna\\Program.cs",
+              "ToolTip": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\Bez_patterna\\Bez_patterna\\Program.cs",
+              "RelativeToolTip": "Bez_patterna\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T15:07:05.889Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Form1.resx",
+              "DocumentMoniker": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\Bez_patterna\\Bez_patterna\\Form1.resx",
+              "RelativeDocumentMoniker": "Bez_patterna\\Form1.resx",
+              "ToolTip": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\Bez_patterna\\Bez_patterna\\Form1.resx",
+              "RelativeToolTip": "Bez_patterna\\Form1.resx",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
+              "WhenOpened": "2026-02-25T16:03:08.838Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentMoniker": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\Bez_patterna\\Bez_patterna\\Form1.cs",
+              "RelativeDocumentMoniker": "Bez_patterna\\Form1.cs",
+              "ToolTip": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\Bez_patterna\\Bez_patterna\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "Bez_patterna\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T15:03:48.424Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Form2.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentMoniker": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\Bez_patterna\\Bez_patterna\\Form2.cs",
+              "RelativeDocumentMoniker": "Bez_patterna\\Form2.cs",
+              "ToolTip": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\Bez_patterna\\Bez_patterna\\Form2.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "Bez_patterna\\Form2.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T15:10:06.91Z"
             }
           ]
         }

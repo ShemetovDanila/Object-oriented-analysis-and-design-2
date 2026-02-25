@@ -91,7 +91,7 @@ namespace Bez_patterna
             if (extraPepp > 0) toppings.Add($"Пепп +{extraPepp}");
             if (extraJal > 0) toppings.Add($"Хал +{extraJal}");
 
-            return toppings.Count > 0 ? string.Join(" | ", toppings) : "Без доп. топпингов";
+            return toppings.Count > 0 ? string.Join(" | ", toppings) : "Без топпингов";
         }
 
         public bool IsSameAs(Pizza other)

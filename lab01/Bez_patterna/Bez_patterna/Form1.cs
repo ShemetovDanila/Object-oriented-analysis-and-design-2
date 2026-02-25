@@ -41,9 +41,6 @@ namespace Bez_patterna
 
         private void InitializeComponentsManual()
         {
-            // ============================================
-            // 1. ПРАВАЯ панель (Текущий заказ) - ДОБАВЛЯЕМ ПЕРВОЙ
-            // ============================================
             Panel panelRight = new Panel();
             panelRight.BackColor = Color.FromArgb(255, 245, 200);
             panelRight.Dock = DockStyle.Right;
@@ -65,7 +62,7 @@ namespace Bez_patterna
             panelCurrentOrder.AutoScroll = true;
             panelCurrentOrder.FlowDirection = FlowDirection.TopDown;
             panelCurrentOrder.WrapContents = false;
-            panelCurrentOrder.Padding = new Padding(15, 10, 15, 15);
+            panelCurrentOrder.Padding = new Padding(15, 65, 15, 15);  // ← Увеличил верхний отступ с 10 до 65
             panelRight.Controls.Add(panelCurrentOrder);
 
             Panel panelBottomRight = new Panel();
@@ -112,9 +109,6 @@ namespace Bez_patterna
             btnHistory.Click += BtnHistory_Click;
             panelBottomRight.Controls.Add(btnHistory);
 
-            // ============================================
-            // 2. ЦЕНТРАЛЬНАЯ панель (Меню) - ДОБАВЛЯЕМ ПОСЛЕДНЕЙ
-            // ============================================
             Panel panelCenter = new Panel();
             panelCenter.Dock = DockStyle.Fill;
             panelCenter.BackColor = Color.White;
@@ -157,13 +151,13 @@ namespace Bez_patterna
                 true, true, false, false, false, false);
 
             itemHawaiian = new PizzaMenuItem(
-                "Гавайская", 520, "marg.png",
+                "Гавайская", 520, "pineapple.png",
                 "Классическое", "Томатный",
                 2, 0, 0, 0,
                 false, false, false, false, true, true);
 
             itemChicken = new PizzaMenuItem(
-                "Куриная", 530, "pep.png",
+                "Куриная", 530, "chicken.png",
                 "Тонкое", "Барбекю",
                 1, 1, 0, 0,
                 true, true, false, false, false, false);
@@ -244,20 +238,18 @@ namespace Bez_patterna
             lblName.AutoSize = true;
             panel.Controls.Add(lblName);
 
-            // Панель для кнопок + и -
             Panel quantityPanel = new Panel();
-            quantityPanel.Size = new Size(70, 30);
-            quantityPanel.Location = new Point(260, 10);
+            quantityPanel.Size = new Size(94, 32);  // ← Увеличил ширину с 70 до 80
+            quantityPanel.Location = new Point(230, 10);
             quantityPanel.BackColor = Color.White;
             quantityPanel.BorderStyle = BorderStyle.FixedSingle;
             panel.Controls.Add(quantityPanel);
 
-            // Кнопка МИНУС
             Button btnMinus = new Button();
             btnMinus.Text = "−";
-            btnMinus.Size = new Size(30, 28);
+            btnMinus.Size = new Size(30, 30);  // ← Чуть больше
             btnMinus.Location = new Point(1, 1);
-            btnMinus.Font = new Font("Arial", 14, FontStyle.Bold);
+            btnMinus.Font = new Font("Arial", 16, FontStyle.Bold);
             btnMinus.BackColor = Color.White;
             btnMinus.ForeColor = Color.Black;
             btnMinus.FlatStyle = FlatStyle.Flat;
@@ -265,12 +257,11 @@ namespace Bez_patterna
             btnMinus.Click += (s, ev) => DecreaseQuantity_Click(orderItem);
             quantityPanel.Controls.Add(btnMinus);
 
-            // Кнопка ПЛЮС
             Button btnPlus = new Button();
             btnPlus.Text = "+";
-            btnPlus.Size = new Size(30, 28);
-            btnPlus.Location = new Point(39, 1);
-            btnPlus.Font = new Font("Arial", 14, FontStyle.Bold);
+            btnPlus.Size = new Size(30, 30);
+            btnPlus.Location = new Point(62, 1);
+            btnPlus.Font = new Font("Arial", 16, FontStyle.Bold);
             btnPlus.BackColor = Color.White;
             btnPlus.ForeColor = Color.Black;
             btnPlus.FlatStyle = FlatStyle.Flat;
@@ -278,15 +269,14 @@ namespace Bez_patterna
             btnPlus.Click += (s, ev) => IncreaseQuantity_Click(orderItem);
             quantityPanel.Controls.Add(btnPlus);
 
-            // ← ИСПРАВЛЕННАЯ ЦИФРА
             orderItem.lblQuantity = new Label();
             orderItem.lblQuantity.Text = $"{orderItem.Quantity}";
-            orderItem.lblQuantity.Font = new Font("Arial", 12, FontStyle.Bold);
+            orderItem.lblQuantity.Font = new Font("Arial", 13, FontStyle.Bold);
             orderItem.lblQuantity.ForeColor = Color.Black;
-            orderItem.lblQuantity.Location = new Point(30, 3);
-            orderItem.lblQuantity.Size = new Size(10, 25);
+            orderItem.lblQuantity.Location = new Point(31, 4);
+            orderItem.lblQuantity.Size = new Size(30, 26);
             orderItem.lblQuantity.TextAlign = ContentAlignment.MiddleCenter;
-            orderItem.lblQuantity.AutoSize = false;  // ← Важно!
+            orderItem.lblQuantity.AutoSize = false;
             quantityPanel.Controls.Add(orderItem.lblQuantity);
 
             Label lblToppings = new Label();
@@ -295,7 +285,7 @@ namespace Bez_patterna
             lblToppings.ForeColor = Color.DimGray;
             lblToppings.Location = new Point(10, 36);
             lblToppings.AutoSize = true;
-            lblToppings.MaximumSize = new Size(280, 40);
+            lblToppings.MaximumSize = new Size(240, 40);
             panel.Controls.Add(lblToppings);
 
             Label lblPrice = new Label();
@@ -326,9 +316,16 @@ namespace Bez_patterna
 
         private void IncreaseQuantity_Click(OrderItem orderItem)
         {
-            orderItem.Quantity++;
-            orderItem.UpdateQuantityDisplay();
-            UpdateOrderDisplay();
+            if (orderItem.Quantity < 99)  // ← Максимум 99
+            {
+                orderItem.Quantity++;
+                orderItem.UpdateQuantityDisplay();
+                UpdateOrderDisplay();
+            }
+            else
+            {
+                MessageBox.Show("Максимум 99 пицц одного вида!", "Лимит", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void RemoveItem_Click(OrderItem orderItem)
@@ -351,7 +348,7 @@ namespace Bez_patterna
             {
                 historyEntry += $"  • {item.Quantity}x {item.Pizza.Name}";
                 string extras = item.Pizza.GetToppingsString();
-                if (extras != "Без доп. топпингов")
+                if (extras != "Без топпингов")
                 {
                     historyEntry += $" [{extras}]";
                 }
