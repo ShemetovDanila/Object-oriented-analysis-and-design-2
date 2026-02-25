@@ -16,6 +16,11 @@ namespace WinFormsApp1
         public int PepperoniPortions { get; set; }
         public int JalapenoPortions { get; set; }
 
+        public int DefaultMozzarella { get; set; }
+        public int DefaultCheddar { get; set; }
+        public int DefaultPepperoni { get; set; }
+        public int DefaultJalapeno { get; set; }
+
         public bool HasChicken { get; set; }
         public bool HasMushrooms { get; set; }
         public bool HasTomatoes { get; set; }
@@ -32,6 +37,10 @@ namespace WinFormsApp1
             int cheddarPortions,
             int pepperoniPortions,
             int jalapenoPortions,
+            int defaultMozzarella,
+            int defaultCheddar,
+            int defaultPepperoni,
+            int defaultJalapeno,
             bool hasChicken,
             bool hasMushrooms,
             bool hasTomatoes,
@@ -47,6 +56,10 @@ namespace WinFormsApp1
             CheddarPortions = cheddarPortions;
             PepperoniPortions = pepperoniPortions;
             JalapenoPortions = jalapenoPortions;
+            DefaultMozzarella = defaultMozzarella;
+            DefaultCheddar = defaultCheddar;
+            DefaultPepperoni = defaultPepperoni;
+            DefaultJalapeno = defaultJalapeno;
             HasChicken = hasChicken;
             HasMushrooms = hasMushrooms;
             HasTomatoes = hasTomatoes;
@@ -68,11 +81,17 @@ namespace WinFormsApp1
         public string GetToppingsString()
         {
             List<string> toppings = new List<string>();
-            if (MozzarellaPortions > 0) toppings.Add($"Моцц x{MozzarellaPortions}");
-            if (CheddarPortions > 0) toppings.Add($"Чедд x{CheddarPortions}");
-            if (PepperoniPortions > 0) toppings.Add($"Пепп x{PepperoniPortions}");
-            if (JalapenoPortions > 0) toppings.Add($"Хал x{JalapenoPortions}");
-            return toppings.Count > 0 ? string.Join(" | ", toppings) : "Без доп.";
+            int extraMozz = MozzarellaPortions - DefaultMozzarella;
+            int extraChed = CheddarPortions - DefaultCheddar;
+            int extraPepp = PepperoniPortions - DefaultPepperoni;
+            int extraJal = JalapenoPortions - DefaultJalapeno;
+
+            if (extraMozz > 0) toppings.Add($"Моцц +{extraMozz}");
+            if (extraChed > 0) toppings.Add($"Чедд +{extraChed}");
+            if (extraPepp > 0) toppings.Add($"Пепп +{extraPepp}");
+            if (extraJal > 0) toppings.Add($"Хал +{extraJal}");
+
+            return toppings.Count > 0 ? string.Join(" | ", toppings) : "Без доп. топпингов";
         }
 
         public bool IsSameAs(Pizza other)
