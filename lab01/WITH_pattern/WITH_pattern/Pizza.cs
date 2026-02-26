@@ -6,12 +6,12 @@ namespace WITH_pattern
     public class Pizza
     {
         public string Name { get; set; }
+        public int BasePrice { get; set; }
+        public bool IsCustomPizza { get; set; }
         public Dough Dough { get; set; }
         public Sauce Sauce { get; set; }
         public Dictionary<Topping, int> Toppings { get; set; }
         public Dictionary<Topping, int> BaseToppings { get; set; }
-        public int BasePrice { get; set; }
-        public bool IsCustomPizza { get; set; }
 
         public Pizza()
         {
@@ -19,7 +19,7 @@ namespace WITH_pattern
             BaseToppings = new Dictionary<Topping, int>();
         }
 
-        public Pizza(string name, Dough dough, Sauce sauce, int basePrice, bool isCustomPizza = false)
+        public Pizza(string name, Dough dough, Sauce sauce, int basePrice, bool isCustomPizza)
         {
             Name = name;
             Dough = dough;
@@ -30,8 +30,10 @@ namespace WITH_pattern
             BaseToppings = new Dictionary<Topping, int>();
         }
 
-        public void AddTopping(Topping topping, int portions = 1, bool isBase = false)
+        public void AddTopping(Topping topping, int portions, bool isBase)
         {
+            if (topping == null) return;
+
             if (isBase)
             {
                 if (BaseToppings.ContainsKey(topping))
@@ -66,8 +68,8 @@ namespace WITH_pattern
             if (IsCustomPizza)
             {
                 int price = BasePrice;
-                price += Dough.Price;
-                price += Sauce.Price;
+                if (Dough != null) price += Dough.Price;
+                if (Sauce != null) price += Sauce.Price;
 
                 foreach (var kvp in Toppings)
                 {
@@ -110,8 +112,9 @@ namespace WITH_pattern
 
         public bool IsSameAs(Pizza other)
         {
-            if (this.Dough.Name != other.Dough.Name) return false;
-            if (this.Sauce.Name != other.Sauce.Name) return false;
+            if (other == null) return false;
+            if (this.Dough?.Name != other.Dough?.Name) return false;
+            if (this.Sauce?.Name != other.Sauce?.Name) return false;
             if (this.Toppings.Count != other.Toppings.Count) return false;
 
             foreach (var kvp in this.Toppings)

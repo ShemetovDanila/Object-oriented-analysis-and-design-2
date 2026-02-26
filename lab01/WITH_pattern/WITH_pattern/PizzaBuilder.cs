@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace WITH_pattern
+﻿namespace WITH_pattern
 {
     public class PizzaBuilder : IPizzaBuilder
     {
@@ -46,22 +44,177 @@ namespace WITH_pattern
             return this;
         }
 
-        public IPizzaBuilder AddTopping(Topping topping, int portions = 1, bool isBase = false)
+        public IPizzaBuilder AddTopMozzarella(int count)
         {
-            _pizza.AddTopping(topping, portions, isBase);
-            return this;
-        }
-
-        public IPizzaBuilder SetToppings(Dictionary<Topping, int> toppings, bool isBase = false)
-        {
-            foreach (var kvp in toppings)
+            if (count > 0)
             {
-                _pizza.AddTopping(kvp.Key, kvp.Value, isBase);
+                Topping topping = ToppingCatalog.GetToppingByName("Моцарелла");
+                _pizza.AddTopping(topping, count, isBase: false);
             }
             return this;
         }
 
-        public Pizza Build()
+        public IPizzaBuilder AddTopCheddar(int count)
+        {
+            if (count > 0)
+            {
+                Topping topping = ToppingCatalog.GetToppingByName("Чеддер");
+                _pizza.AddTopping(topping, count, isBase: false);
+            }
+            return this;
+        }
+
+        public IPizzaBuilder AddTopParmesan(int count)
+        {
+            if (count > 0)
+            {
+                Topping topping = ToppingCatalog.GetToppingByName("Пармезан");
+                _pizza.AddTopping(topping, count, isBase: false);
+            }
+            return this;
+        }
+
+        public IPizzaBuilder AddTopDorBlue(int count)
+        {
+            if (count > 0)
+            {
+                Topping topping = ToppingCatalog.GetToppingByName("Дор Блю");
+                _pizza.AddTopping(topping, count, isBase: false);
+            }
+            return this;
+        }
+
+        public IPizzaBuilder AddTopPepperoni(int count)
+        {
+            if (count > 0)
+            {
+                Topping topping = ToppingCatalog.GetToppingByName("Пепперони");
+                _pizza.AddTopping(topping, count, isBase: false);
+            }
+            return this;
+        }
+
+        public IPizzaBuilder AddTopHam(int count)
+        {
+            if (count > 0)
+            {
+                Topping topping = ToppingCatalog.GetToppingByName("Ветчина");
+                _pizza.AddTopping(topping, count, isBase: false);
+            }
+            return this;
+        }
+
+        public IPizzaBuilder AddTopChicken(int count)
+        {
+            if (count > 0)
+            {
+                Topping topping = ToppingCatalog.GetToppingByName("Курица");
+                _pizza.AddTopping(topping, count, isBase: false);
+            }
+            return this;
+        }
+
+        public IPizzaBuilder AddTopBacon(int count)
+        {
+            if (count > 0)
+            {
+                Topping topping = ToppingCatalog.GetToppingByName("Бекон");
+                _pizza.AddTopping(topping, count, isBase: false);
+            }
+            return this;
+        }
+
+        public IPizzaBuilder AddTopMushrooms(int count)
+        {
+            if (count > 0)
+            {
+                Topping topping = ToppingCatalog.GetToppingByName("Грибы");
+                _pizza.AddTopping(topping, count, isBase: false);
+            }
+            return this;
+        }
+
+        public IPizzaBuilder AddTopTomatoes(int count)
+        {
+            if (count > 0)
+            {
+                Topping topping = ToppingCatalog.GetToppingByName("Помидоры");
+                _pizza.AddTopping(topping, count, isBase: false);
+            }
+            return this;
+        }
+
+        public IPizzaBuilder AddTopOlives(int count)
+        {
+            if (count > 0)
+            {
+                Topping topping = ToppingCatalog.GetToppingByName("Оливки");
+                _pizza.AddTopping(topping, count, isBase: false);
+            }
+            return this;
+        }
+
+        public IPizzaBuilder AddTopJalapeno(int count)
+        {
+            if (count > 0)
+            {
+                Topping topping = ToppingCatalog.GetToppingByName("Перец халапено");
+                _pizza.AddTopping(topping, count, isBase: false);
+            }
+            return this;
+        }
+
+        public IPizzaBuilder AddTopBellPepper(int count)
+        {
+            if (count > 0)
+            {
+                Topping topping = ToppingCatalog.GetToppingByName("Болгарский перец");
+                _pizza.AddTopping(topping, count, isBase: false);
+            }
+            return this;
+        }
+
+        public IPizzaBuilder AddTopOnion(int count)
+        {
+            if (count > 0)
+            {
+                Topping topping = ToppingCatalog.GetToppingByName("Лук");
+                _pizza.AddTopping(topping, count, isBase: false);
+            }
+            return this;
+        }
+
+        public IPizzaBuilder AddTopPineapple(int count)
+        {
+            if (count > 0)
+            {
+                Topping topping = ToppingCatalog.GetToppingByName("Ананас");
+                _pizza.AddTopping(topping, count, isBase: false);
+            }
+            return this;
+        }
+
+        public IPizzaBuilder AddTopBasil(int count)
+        {
+            if (count > 0)
+            {
+                Topping topping = ToppingCatalog.GetToppingByName("Базилик");
+                _pizza.AddTopping(topping, count, isBase: false);
+            }
+            return this;
+        }
+
+        public IPizzaBuilder AddTopArugula(int count)
+        {
+            if (count > 0)
+            {
+                Topping topping = ToppingCatalog.GetToppingByName("Руккола");
+                _pizza.AddTopping(topping, count, isBase: false);
+            }
+            return this;
+        }
+
+        public Pizza GetResult()
         {
             Pizza result = _pizza;
             Reset();

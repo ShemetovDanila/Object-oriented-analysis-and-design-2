@@ -18,7 +18,6 @@ namespace WITH_pattern
         private List<string> orderHistoryList;
 
         private PizzaDirector _director;
-        private IPizzaBuilder _builder;
 
         private PizzaMenuItem itemCustom;
         private PizzaMenuItem itemMargarita;
@@ -42,9 +41,7 @@ namespace WITH_pattern
             historyForm = null;
             orderHistoryList = new List<string>();
 
-            _builder = new PizzaBuilder();
             _director = new PizzaDirector();
-            _director.SetBuilder(_builder);
 
             this.InitializeComponentsManual();
         }
@@ -56,6 +53,7 @@ namespace WITH_pattern
 
         private void InitializeComponentsManual()
         {
+            // === ПАНЕЛЬ СПРАВА (Текущий заказ) ===
             Panel panelRight = new Panel();
             panelRight.BackColor = Color.FromArgb(255, 245, 200);
             panelRight.Dock = DockStyle.Right;
@@ -124,6 +122,7 @@ namespace WITH_pattern
             btnHistory.Click += BtnHistory_Click;
             panelBottomRight.Controls.Add(btnHistory);
 
+            // === ЦЕНТРАЛЬНАЯ ПАНЕЛЬ (Меню) ===
             Panel panelCenter = new Panel();
             panelCenter.Dock = DockStyle.Fill;
             panelCenter.BackColor = Color.White;
@@ -150,39 +149,34 @@ namespace WITH_pattern
             var defaultDough = ToppingCatalog.GetDoughByName("Классическое");
             var defaultSauce = ToppingCatalog.GetSauceByName("Томатный");
 
+            // === СОЗДАНИЕ ПИЦЦ ЧЕРЕЗ BUILDER PATTERN ===
             itemCustom = new PizzaMenuItem("🍕 Конструктор", 200, "myPizza.png",
-                _director.MakeCustomPizza(defaultDough, defaultSauce), true);
+                new Pizza("Ваша пицца", defaultDough, defaultSauce, 200, true), true);
 
-            itemMargarita = new PizzaMenuItem("Маргарита", 450, "marg.png",
-                _director.MakeMargarita(defaultDough, defaultSauce,
-                    ToppingCatalog.GetToppingByName("Моцарелла"),
-                    ToppingCatalog.GetToppingByName("Помидоры"),
-                    ToppingCatalog.GetToppingByName("Базилик")), false);
+            var builderMargarita = new PizzaBuilder();
+            _director.MakeMargarita(builderMargarita);
+            Pizza pizzaMargarita = builderMargarita.GetResult();
+            itemMargarita = new PizzaMenuItem("Маргарита", 450, "marg.png", pizzaMargarita, false);
 
-            itemPepperoni = new PizzaMenuItem("Пепперони", 550, "pep.png",
-                _director.MakePepperoni(defaultDough, defaultSauce,
-                    ToppingCatalog.GetToppingByName("Моцарелла"),
-                    ToppingCatalog.GetToppingByName("Пепперони")), false);
+            var builderPepperoni = new PizzaBuilder();
+            _director.MakePepperoni(builderPepperoni);
+            Pizza pizzaPepperoni = builderPepperoni.GetResult();
+            itemPepperoni = new PizzaMenuItem("Пепперони", 550, "pep.png", pizzaPepperoni, false);
 
-            itemCountry = new PizzaMenuItem("Кантри", 500, "kant.png",
-                _director.MakeCountry(defaultDough, ToppingCatalog.GetSauceByName("Сливочный"),
-                    ToppingCatalog.GetToppingByName("Моцарелла"),
-                    ToppingCatalog.GetToppingByName("Чеддер"),
-                    ToppingCatalog.GetToppingByName("Курица"),
-                    ToppingCatalog.GetToppingByName("Грибы")), false);
+            var builderCountry = new PizzaBuilder();
+            _director.MakeCountry(builderCountry);
+            Pizza pizzaCountry = builderCountry.GetResult();
+            itemCountry = new PizzaMenuItem("Кантри", 500, "kant.png", pizzaCountry, false);
 
-            itemHawaiian = new PizzaMenuItem("Гавайская", 520, "pineapple.png",
-                _director.MakeHawaiian(defaultDough, defaultSauce,
-                    ToppingCatalog.GetToppingByName("Моцарелла"),
-                    ToppingCatalog.GetToppingByName("Ветчина"),
-                    ToppingCatalog.GetToppingByName("Ананас")), false);
+            var builderHawaiian = new PizzaBuilder();
+            _director.MakeHawaiian(builderHawaiian);
+            Pizza pizzaHawaiian = builderHawaiian.GetResult();
+            itemHawaiian = new PizzaMenuItem("Гавайская", 520, "pineapple.png", pizzaHawaiian, false);
 
-            itemChicken = new PizzaMenuItem("Куриная", 530, "chicken.png",
-                _director.MakeChicken(defaultDough, ToppingCatalog.GetSauceByName("Барбекю"),
-                    ToppingCatalog.GetToppingByName("Моцарелла"),
-                    ToppingCatalog.GetToppingByName("Чеддер"),
-                    ToppingCatalog.GetToppingByName("Курица"),
-                    ToppingCatalog.GetToppingByName("Грибы")), false);
+            var builderChicken = new PizzaBuilder();
+            _director.MakeChicken(builderChicken);
+            Pizza pizzaChicken = builderChicken.GetResult();
+            itemChicken = new PizzaMenuItem("Куриная", 530, "chicken.png", pizzaChicken, false);
 
             panelMenu.Controls.Add(itemCustom.CreatePanel(BtnAdd_Click));
             panelMenu.Controls.Add(itemMargarita.CreatePanel(BtnAdd_Click));

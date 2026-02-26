@@ -1,96 +1,76 @@
-﻿using System.Collections.Generic;
-
-namespace WITH_pattern
+﻿namespace WITH_pattern
 {
     public class PizzaDirector
     {
-        private IPizzaBuilder _builder;
-
-        public void SetBuilder(IPizzaBuilder builder)
+        public void MakeMargarita(IPizzaBuilder builder)
         {
-            _builder = builder;
+            builder.Reset();
+            builder.SetName("Маргарита")
+                   .SetBasePrice(450)
+                   .SetDough(ToppingCatalog.GetDoughByName("Классическое"))
+                   .SetSauce(ToppingCatalog.GetSauceByName("Томатный"))
+                   .AddTopMozzarella(2)
+                   .AddTopTomatoes(1)
+                   .AddTopBasil(1);
         }
 
-        public Pizza MakeMargarita(Dough dough, Sauce sauce, Topping mozzarella, Topping tomatoes, Topping basil)
+        public void MakePepperoni(IPizzaBuilder builder)
         {
-            _builder.Reset();
-            return _builder.SetName("Маргарита")
-                          .SetDough(dough)
-                          .SetSauce(sauce)
-                          .SetBasePrice(450)
-                          .SetIsCustomPizza(false)
-                          .AddTopping(mozzarella, 2, isBase: true)
-                          .AddTopping(tomatoes, 1, isBase: true)
-                          .AddTopping(basil, 1, isBase: true)
-                          .Build();
+            builder.Reset();
+            builder.SetName("Пепперони")
+                   .SetBasePrice(550)
+                   .SetDough(ToppingCatalog.GetDoughByName("Тонкое"))
+                   .SetSauce(ToppingCatalog.GetSauceByName("Томатный"))
+                   .AddTopMozzarella(1)
+                   .AddTopPepperoni(3);
         }
 
-        public Pizza MakePepperoni(Dough dough, Sauce sauce, Topping mozzarella, Topping pepperoni)
+        public void MakeCountry(IPizzaBuilder builder)
         {
-            _builder.Reset();
-            return _builder.SetName("Пепперони")
-                          .SetDough(dough)
-                          .SetSauce(sauce)
-                          .SetBasePrice(550)
-                          .SetIsCustomPizza(false)
-                          .AddTopping(mozzarella, 1, isBase: true)
-                          .AddTopping(pepperoni, 3, isBase: true)
-                          .Build();
+            builder.Reset();
+            builder.SetName("Кантри")
+                   .SetBasePrice(500)
+                   .SetDough(ToppingCatalog.GetDoughByName("Пышное"))
+                   .SetSauce(ToppingCatalog.GetSauceByName("Сливочный"))
+                   .AddTopMozzarella(1)
+                   .AddTopCheddar(1)
+                   .AddTopChicken(1)
+                   .AddTopMushrooms(1);
         }
 
-        public Pizza MakeCountry(Dough dough, Sauce sauce, Topping mozzarella, Topping cheddar, Topping chicken, Topping mushrooms)
+        public void MakeHawaiian(IPizzaBuilder builder)
         {
-            _builder.Reset();
-            return _builder.SetName("Кантри")
-                          .SetDough(dough)
-                          .SetSauce(sauce)
-                          .SetBasePrice(500)
-                          .SetIsCustomPizza(false)
-                          .AddTopping(mozzarella, 1, isBase: true)
-                          .AddTopping(cheddar, 1, isBase: true)
-                          .AddTopping(chicken, 1, isBase: true)
-                          .AddTopping(mushrooms, 1, isBase: true)
-                          .Build();
+            builder.Reset();
+            builder.SetName("Гавайская")
+                   .SetBasePrice(520)
+                   .SetDough(ToppingCatalog.GetDoughByName("Классическое"))
+                   .SetSauce(ToppingCatalog.GetSauceByName("Томатный"))
+                   .AddTopMozzarella(2)
+                   .AddTopHam(1)
+                   .AddTopPineapple(1);
         }
 
-        public Pizza MakeHawaiian(Dough dough, Sauce sauce, Topping mozzarella, Topping ham, Topping pineapple)
+        public void MakeChicken(IPizzaBuilder builder)
         {
-            _builder.Reset();
-            return _builder.SetName("Гавайская")
-                          .SetDough(dough)
-                          .SetSauce(sauce)
-                          .SetBasePrice(520)
-                          .SetIsCustomPizza(false)
-                          .AddTopping(mozzarella, 2, isBase: true)
-                          .AddTopping(ham, 1, isBase: true)
-                          .AddTopping(pineapple, 1, isBase: true)
-                          .Build();
+            builder.Reset();
+            builder.SetName("Куриная")
+                   .SetBasePrice(530)
+                   .SetDough(ToppingCatalog.GetDoughByName("Тонкое"))
+                   .SetSauce(ToppingCatalog.GetSauceByName("Барбекю"))
+                   .AddTopMozzarella(1)
+                   .AddTopCheddar(1)
+                   .AddTopChicken(1)
+                   .AddTopMushrooms(1);
         }
 
-        public Pizza MakeChicken(Dough dough, Sauce sauce, Topping mozzarella, Topping cheddar, Topping chicken, Topping mushrooms)
+        public void MakeCustomPizza(IPizzaBuilder builder, Dough dough, Sauce sauce)
         {
-            _builder.Reset();
-            return _builder.SetName("Куриная")
-                          .SetDough(dough)
-                          .SetSauce(sauce)
-                          .SetBasePrice(530)
-                          .SetIsCustomPizza(false)
-                          .AddTopping(mozzarella, 1, isBase: true)
-                          .AddTopping(cheddar, 1, isBase: true)
-                          .AddTopping(chicken, 1, isBase: true)
-                          .AddTopping(mushrooms, 1, isBase: true)
-                          .Build();
-        }
-
-        public Pizza MakeCustomPizza(Dough dough, Sauce sauce)
-        {
-            _builder.Reset();
-            return _builder.SetName("Ваша пицца")
-                          .SetDough(dough)
-                          .SetSauce(sauce)
-                          .SetBasePrice(200)
-                          .SetIsCustomPizza(true)
-                          .Build();
+            builder.Reset();
+            builder.SetName("Ваша пицца")
+                   .SetBasePrice(200)
+                   .SetIsCustomPizza(true)
+                   .SetDough(dough)
+                   .SetSauce(sauce);
         }
     }
 }

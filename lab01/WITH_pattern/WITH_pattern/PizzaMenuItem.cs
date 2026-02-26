@@ -174,7 +174,7 @@ namespace WITH_pattern
                 currentTopping++;
             }
 
-            int panelHeight = toppingStartY + ((ToppingCatalog.GetAllToppings().Count / toppingsPerRow) + 2) * toppingSpacingY - 70;
+            int panelHeight = toppingStartY + ((ToppingCatalog.GetAllToppings().Count / toppingsPerRow) + 2) * toppingSpacingY + 30;
             panel.Size = new Size(1050, panelHeight);
 
             BtnAdd = new Button();
@@ -193,7 +193,7 @@ namespace WITH_pattern
             lblDynamicPrice.Text = $"Текущая цена: {CalculateCurrentPrice()} руб.";
             lblDynamicPrice.Font = new Font("Arial", 16, FontStyle.Bold);
             lblDynamicPrice.ForeColor = Color.FromArgb(255, 140, 0);
-            lblDynamicPrice.Location = new Point(700, 85);
+            lblDynamicPrice.Location = new Point(720, 85);
             lblDynamicPrice.AutoSize = true;
             panel.Controls.Add(lblDynamicPrice);
 
@@ -284,39 +284,111 @@ namespace WITH_pattern
         {
             if (IsCustomPizza)
             {
-                Dough selectedDough = (Dough)ComboDough.SelectedItem;
-                Sauce selectedSauce = (Sauce)ComboSauce.SelectedItem;
+                var builder = new PizzaBuilder();
+                builder.SetName("Ваша пицца")
+                       .SetBasePrice(BasePrice)
+                       .SetIsCustomPizza(true);
 
-                Pizza pizza = new Pizza("Ваша пицца", selectedDough, selectedSauce, BasePrice, isCustomPizza: true);
+                if (ComboDough != null && ComboDough.SelectedItem != null)
+                {
+                    builder.SetDough((Dough)ComboDough.SelectedItem);
+                }
+
+                if (ComboSauce != null && ComboSauce.SelectedItem != null)
+                {
+                    builder.SetSauce((Sauce)ComboSauce.SelectedItem);
+                }
 
                 foreach (var kvp in ToppingControls)
                 {
                     if (kvp.Value.Value > 0)
                     {
-                        pizza.AddTopping(kvp.Key, (int)kvp.Value.Value, isBase: false);
+                        switch (kvp.Key.Name)
+                        {
+                            case "Моцарелла": builder.AddTopMozzarella((int)kvp.Value.Value); break;
+                            case "Чеддер": builder.AddTopCheddar((int)kvp.Value.Value); break;
+                            case "Пармезан": builder.AddTopParmesan((int)kvp.Value.Value); break;
+                            case "Дор Блю": builder.AddTopDorBlue((int)kvp.Value.Value); break;
+                            case "Пепперони": builder.AddTopPepperoni((int)kvp.Value.Value); break;
+                            case "Ветчина": builder.AddTopHam((int)kvp.Value.Value); break;
+                            case "Курица": builder.AddTopChicken((int)kvp.Value.Value); break;
+                            case "Бекон": builder.AddTopBacon((int)kvp.Value.Value); break;
+                            case "Грибы": builder.AddTopMushrooms((int)kvp.Value.Value); break;
+                            case "Помидоры": builder.AddTopTomatoes((int)kvp.Value.Value); break;
+                            case "Оливки": builder.AddTopOlives((int)kvp.Value.Value); break;
+                            case "Перец халапено": builder.AddTopJalapeno((int)kvp.Value.Value); break;
+                            case "Болгарский перец": builder.AddTopBellPepper((int)kvp.Value.Value); break;
+                            case "Лук": builder.AddTopOnion((int)kvp.Value.Value); break;
+                            case "Ананас": builder.AddTopPineapple((int)kvp.Value.Value); break;
+                            case "Базилик": builder.AddTopBasil((int)kvp.Value.Value); break;
+                            case "Руккола": builder.AddTopArugula((int)kvp.Value.Value); break;
+                        }
                     }
                 }
 
-                return pizza;
+                return builder.GetResult();
             }
             else
             {
-                Pizza pizza = new Pizza(Pizza.Name, Pizza.Dough, Pizza.Sauce, BasePrice, isCustomPizza: false);
+                var builder = new PizzaBuilder();
+                builder.SetName(Pizza.Name)
+                       .SetBasePrice(BasePrice)
+                       .SetIsCustomPizza(false)
+                       .SetDough(Pizza.Dough)
+                       .SetSauce(Pizza.Sauce);
 
                 foreach (var kvp in Pizza.BaseToppings)
                 {
-                    pizza.AddTopping(kvp.Key, kvp.Value, isBase: true);
+                    switch (kvp.Key.Name)
+                    {
+                        case "Моцарелла": builder.AddTopMozzarella(kvp.Value); break;
+                        case "Чеддер": builder.AddTopCheddar(kvp.Value); break;
+                        case "Пармезан": builder.AddTopParmesan(kvp.Value); break;
+                        case "Дор Блю": builder.AddTopDorBlue(kvp.Value); break;
+                        case "Пепперони": builder.AddTopPepperoni(kvp.Value); break;
+                        case "Ветчина": builder.AddTopHam(kvp.Value); break;
+                        case "Курица": builder.AddTopChicken(kvp.Value); break;
+                        case "Бекон": builder.AddTopBacon(kvp.Value); break;
+                        case "Грибы": builder.AddTopMushrooms(kvp.Value); break;
+                        case "Помидоры": builder.AddTopTomatoes(kvp.Value); break;
+                        case "Оливки": builder.AddTopOlives(kvp.Value); break;
+                        case "Перец халапено": builder.AddTopJalapeno(kvp.Value); break;
+                        case "Болгарский перец": builder.AddTopBellPepper(kvp.Value); break;
+                        case "Лук": builder.AddTopOnion(kvp.Value); break;
+                        case "Ананас": builder.AddTopPineapple(kvp.Value); break;
+                        case "Базилик": builder.AddTopBasil(kvp.Value); break;
+                        case "Руккола": builder.AddTopArugula(kvp.Value); break;
+                    }
                 }
 
                 foreach (var kvp in ToppingControls)
                 {
                     if (kvp.Value.Value > 0)
                     {
-                        pizza.AddTopping(kvp.Key, (int)kvp.Value.Value, isBase: false);
+                        switch (kvp.Key.Name)
+                        {
+                            case "Моцарелла": builder.AddTopMozzarella((int)kvp.Value.Value); break;
+                            case "Чеддер": builder.AddTopCheddar((int)kvp.Value.Value); break;
+                            case "Пармезан": builder.AddTopParmesan((int)kvp.Value.Value); break;
+                            case "Дор Блю": builder.AddTopDorBlue((int)kvp.Value.Value); break;
+                            case "Пепперони": builder.AddTopPepperoni((int)kvp.Value.Value); break;
+                            case "Ветчина": builder.AddTopHam((int)kvp.Value.Value); break;
+                            case "Курица": builder.AddTopChicken((int)kvp.Value.Value); break;
+                            case "Бекон": builder.AddTopBacon((int)kvp.Value.Value); break;
+                            case "Грибы": builder.AddTopMushrooms((int)kvp.Value.Value); break;
+                            case "Помидоры": builder.AddTopTomatoes((int)kvp.Value.Value); break;
+                            case "Оливки": builder.AddTopOlives((int)kvp.Value.Value); break;
+                            case "Перец халапено": builder.AddTopJalapeno((int)kvp.Value.Value); break;
+                            case "Болгарский перец": builder.AddTopBellPepper((int)kvp.Value.Value); break;
+                            case "Лук": builder.AddTopOnion((int)kvp.Value.Value); break;
+                            case "Ананас": builder.AddTopPineapple((int)kvp.Value.Value); break;
+                            case "Базилик": builder.AddTopBasil((int)kvp.Value.Value); break;
+                            case "Руккола": builder.AddTopArugula((int)kvp.Value.Value); break;
+                        }
                     }
                 }
 
-                return pizza;
+                return builder.GetResult();
             }
         }
     }
