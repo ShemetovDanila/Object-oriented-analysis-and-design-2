@@ -1,5 +1,5 @@
-using Bez_patterna;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -15,6 +15,7 @@ namespace Bez_patterna
         private Button btnCheckout;
         private Button btnHistory;
         private Form2 historyForm;
+        private List<string> orderHistoryList;
 
         private PizzaMenuItem itemMargarita;
         private PizzaMenuItem itemPepperoni;
@@ -35,8 +36,14 @@ namespace Bez_patterna
             panelCurrentOrder = new FlowLayoutPanel();
             currentOrder = new Order();
             historyForm = null;
+            orderHistoryList = new List<string>();
 
             this.InitializeComponentsManual();
+        }
+
+        public void ClearHistory()
+        {
+            orderHistoryList.Clear();
         }
 
         private void InitializeComponentsManual()
@@ -55,14 +62,14 @@ namespace Bez_patterna
             lblOrderTitle.BackColor = Color.FromArgb(255, 245, 200);
             lblOrderTitle.Padding = new Padding(15, 15, 15, 10);
             lblOrderTitle.Dock = DockStyle.Top;
-            lblOrderTitle.Height = 50;
+            lblOrderTitle.Height = 55;
             panelRight.Controls.Add(lblOrderTitle);
 
             panelCurrentOrder.Dock = DockStyle.Fill;
             panelCurrentOrder.AutoScroll = true;
             panelCurrentOrder.FlowDirection = FlowDirection.TopDown;
             panelCurrentOrder.WrapContents = false;
-            panelCurrentOrder.Padding = new Padding(15, 65, 15, 15);  // ← Увеличил верхний отступ с 10 до 65
+            panelCurrentOrder.Padding = new Padding(15, 65, 15, 15);
             panelRight.Controls.Add(panelCurrentOrder);
 
             Panel panelBottomRight = new Panel();
@@ -173,7 +180,13 @@ namespace Bez_patterna
         {
             if (historyForm == null || historyForm.IsDisposed)
             {
-                historyForm = new Form2();
+                historyForm = new Form2(this);
+
+                foreach (string order in orderHistoryList)
+                {
+                    historyForm.AddOrderToHistory(order);
+                }
+
                 historyForm.Show();
             }
             else
@@ -239,7 +252,7 @@ namespace Bez_patterna
             panel.Controls.Add(lblName);
 
             Panel quantityPanel = new Panel();
-            quantityPanel.Size = new Size(94, 32);  // ← Увеличил ширину с 70 до 80
+            quantityPanel.Size = new Size(100, 32);
             quantityPanel.Location = new Point(230, 10);
             quantityPanel.BackColor = Color.White;
             quantityPanel.BorderStyle = BorderStyle.FixedSingle;
@@ -247,7 +260,7 @@ namespace Bez_patterna
 
             Button btnMinus = new Button();
             btnMinus.Text = "−";
-            btnMinus.Size = new Size(30, 30);  // ← Чуть больше
+            btnMinus.Size = new Size(30, 30);
             btnMinus.Location = new Point(1, 1);
             btnMinus.Font = new Font("Arial", 16, FontStyle.Bold);
             btnMinus.BackColor = Color.White;
@@ -260,7 +273,7 @@ namespace Bez_patterna
             Button btnPlus = new Button();
             btnPlus.Text = "+";
             btnPlus.Size = new Size(30, 30);
-            btnPlus.Location = new Point(62, 1);
+            btnPlus.Location = new Point(69, 1);
             btnPlus.Font = new Font("Arial", 16, FontStyle.Bold);
             btnPlus.BackColor = Color.White;
             btnPlus.ForeColor = Color.Black;
@@ -274,7 +287,7 @@ namespace Bez_patterna
             orderItem.lblQuantity.Font = new Font("Arial", 13, FontStyle.Bold);
             orderItem.lblQuantity.ForeColor = Color.Black;
             orderItem.lblQuantity.Location = new Point(31, 4);
-            orderItem.lblQuantity.Size = new Size(30, 26);
+            orderItem.lblQuantity.Size = new Size(38, 26);
             orderItem.lblQuantity.TextAlign = ContentAlignment.MiddleCenter;
             orderItem.lblQuantity.AutoSize = false;
             quantityPanel.Controls.Add(orderItem.lblQuantity);
@@ -316,7 +329,7 @@ namespace Bez_patterna
 
         private void IncreaseQuantity_Click(OrderItem orderItem)
         {
-            if (orderItem.Quantity < 99)  // ← Максимум 99
+            if (orderItem.Quantity < 99)
             {
                 orderItem.Quantity++;
                 orderItem.UpdateQuantityDisplay();
@@ -348,12 +361,14 @@ namespace Bez_patterna
             {
                 historyEntry += $"  • {item.Quantity}x {item.Pizza.Name}";
                 string extras = item.Pizza.GetToppingsString();
-                if (extras != "Без топпингов")
+                if (extras != "Без доп. топпингов")
                 {
                     historyEntry += $" [{extras}]";
                 }
                 historyEntry += "\n";
             }
+
+            orderHistoryList.Add(historyEntry);
 
             if (historyForm != null && !historyForm.IsDisposed)
             {
