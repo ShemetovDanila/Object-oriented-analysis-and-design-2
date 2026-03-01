@@ -28,17 +28,14 @@ namespace WITH_pattern
 
         private void InitializeLayout()
         {
-            // Правая панель (Корзина) - ЖЕСТКАЯ СТРУКТУРА
             Panel pnlRight = new Panel { Dock = DockStyle.Right, Width = 420, BackColor = Color.White };
             this.Controls.Add(pnlRight);
 
-            // 1. Заголовок (Top)
             Panel pnlCartHeader = new Panel { Dock = DockStyle.Top, Height = 80, BackColor = Color.FromArgb(33, 33, 33) };
             Label lblTitle = new Label { Text = "ВАШ ЗАКАЗ", Font = new Font("Segoe UI", 20, FontStyle.Bold), ForeColor = Color.White, Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleCenter };
             pnlCartHeader.Controls.Add(lblTitle);
             pnlRight.Controls.Add(pnlCartHeader);
 
-            // 2. Подвал (Bottom)
             Panel pnlCartFooter = new Panel { Dock = DockStyle.Bottom, Height = 260, BackColor = Color.FromArgb(250, 250, 250), Padding = new Padding(20) };
             pnlCartFooter.Paint += (s, e) => e.Graphics.DrawLine(new Pen(Color.LightGray, 1), 0, 0, 420, 0);
 
@@ -55,12 +52,10 @@ namespace WITH_pattern
             pnlCartFooter.Controls.AddRange(new Control[] { btnH, btnPay, lblSum, lblCount });
             pnlRight.Controls.Add(pnlCartFooter);
 
-            // 3. Список (Fill) - ТЕПЕРЬ ОН ЗАЖАТ МЕЖДУ НИМИ
             flowOrder = new FlowLayoutPanel { Dock = DockStyle.Fill, AutoScroll = true, FlowDirection = FlowDirection.TopDown, WrapContents = false, Padding = new Padding(15), BackColor = Color.White };
             pnlRight.Controls.Add(flowOrder);
             flowOrder.BringToFront();
 
-            // Левая панель (Меню)
             flowMenu = new FlowLayoutPanel { Dock = DockStyle.Fill, AutoScroll = true, Padding = new Padding(30) };
             this.Controls.Add(flowMenu);
 
@@ -78,20 +73,49 @@ namespace WITH_pattern
 
         private void OnAdd(object sender, EventArgs e)
         {
-            PizzaMenuItem sel = null; Panel p = (Panel)((Button)sender).Parent;
+            PizzaMenuItem sel = null;
+            Panel p = (Panel)((Button)sender).Parent;
+
             if (p == itC.Panel) sel = itC;
             else if (p == itM.Panel) sel = itM;
             else if (p == itP.Panel) sel = itP;
-            else if (p == itK.Panel) sel = itK; else if (p == itH.Panel) sel = itH; else if (p == itCh.Panel) sel = itCh;
+            else if (p == itK.Panel) sel = itK;
+            else if (p == itH.Panel) sel = itH;
+            else if (p == itCh.Panel) sel = itCh;
 
             if (sel != null)
             {
                 var pizza = sel.CreatePizzaWithToppings();
-                order.AddPizza(pizza);
-                var item = order.Items.Last();
-                extraInfo[item] = sel.GetUserSelectedExtras();
+                var extras = sel.GetUserSelectedExtras();
+
+                string currentKey = $"{pizza.name}|{pizza.Dough.name}|{pizza.Sauce.name}|{string.Join(",", extras)}";
+
+                OrderItem existing = null;
+                foreach (var item in order.Items)
+                {
+                    var itemExtras = extraInfo.ContainsKey(item) ? extraInfo[item] : new List<string>();
+                    string itemKey = $"{item.Pizza.name}|{item.Pizza.Dough.name}|{item.Pizza.Sauce.name}|{string.Join(",", itemExtras)}";
+
+                    if (itemKey == currentKey)
+                    {
+                        existing = item;
+                        break;
+                    }
+                }
+
+                if (existing != null)
+                {
+                    existing.Quantity++;
+                }
+                else
+                {
+                    order.AddPizza(pizza);
+                    var newItem = order.Items.Last();
+                    extraInfo[newItem] = extras;
+                }
+
                 UpdateUI();
-                foreach (var ctrl in sel.ToppingControls) ctrl.Value.Value = 0;
+                sel.ResetSelection();
             }
         }
 
@@ -106,17 +130,15 @@ namespace WITH_pattern
                 Label lblN = new Label { Text = item.Pizza.name, Font = new Font("Segoe UI", 11, FontStyle.Bold), Location = new Point(15, 10), AutoSize = true };
                 Label lblD = new Label { Text = $"{item.Pizza.Dough.name} / {item.Pizza.Sauce.name}", Location = new Point(15, 32), ForeColor = Color.Gray, Font = new Font("Segoe UI", 8), AutoSize = true };
 
-                string extras = (extraInfo.ContainsKey(item) && extraInfo[item].Count > 0)
-                    ? "Доп: " + string.Join(", ", extraInfo[item])
-                    : (item.Pizza.custom ? "Пустая пицца" : "Стандартный состав");
+                var extrasList = extraInfo.ContainsKey(item) ? extraInfo[item] : new List<string>();
+                string extrasText = extrasList.Count > 0 ? "Доп: " + string.Join(", ", extrasList) : (item.Pizza.custom ? "Только основа" : "Стандартный состав");
 
-                Label lblT = new Label { Text = extras, Location = new Point(15, 50), Size = new Size(335, 45), Font = new Font("Segoe UI", 7), ForeColor = Color.DimGray };
+                Label lblT = new Label { Text = extrasText, Location = new Point(15, 50), Size = new Size(335, 45), Font = new Font("Segoe UI", 7), ForeColor = Color.DimGray };
                 Label lblP = new Label { Text = $"{item.GetTotalPrice()} ₽", Location = new Point(15, 105), Font = new Font("Segoe UI", 12, FontStyle.Bold), ForeColor = Color.OrangeRed, AutoSize = true };
 
-                // Компактный счетчик
                 Panel qtyPnl = new Panel { Size = new Size(110, 36), Location = new Point(235, 100), BorderStyle = BorderStyle.FixedSingle };
                 Button btnM = new Button { Text = "-", Size = new Size(32, 34), Location = new Point(0, 0), FlatStyle = FlatStyle.Flat };
-                btnM.Click += (s, e) => { if (item.Quantity > 1) item.Quantity--; else order.RemoveItem(item); UpdateUI(); };
+                btnM.Click += (s, e) => { if (item.Quantity > 1) item.Quantity--; else { extraInfo.Remove(item); order.RemoveItem(item); } UpdateUI(); };
                 Button btnP = new Button { Text = "+", Size = new Size(32, 34), Location = new Point(76, 0), FlatStyle = FlatStyle.Flat };
                 btnP.Click += (s, e) => { item.Quantity++; UpdateUI(); };
                 Label lblQ = new Label { Text = item.Quantity.ToString(), Size = new Size(44, 34), Location = new Point(32, 0), TextAlign = ContentAlignment.MiddleCenter, Font = new Font("Segoe UI", 10, FontStyle.Bold) };

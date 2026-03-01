@@ -3,80 +3,88 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Linq;
+using System.IO;
 
 namespace WITH_pattern
 {
     public class PizzaMenuItem
     {
         public string Name { get; set; }
-        public string ImagePath { get; set; }
         public Pizza Template { get; set; }
         public bool IsCustom { get; set; }
-        public Panel Panel { get; set; }
-        public Dictionary<string, NumericUpDown> ToppingControls { get; set; } = new Dictionary<string, NumericUpDown>();
-        private ComboBox cbDough;
-        private ComboBox cbSauce;
+        public string ImagePath { get; set; }
+        public Panel Panel { get; private set; }
+        public Dictionary<string, NumericUpDown> ToppingControls { get; } = new Dictionary<string, NumericUpDown>();
+        private ComboBox cbDough, cbSauce;
 
-        public PizzaMenuItem(string name, int price, string imagePath, Pizza template, bool isCustom)
+        public PizzaMenuItem(string name, int price, string image, Pizza template, bool custom)
         {
-            this.Name = name; this.ImagePath = imagePath; this.Template = template; this.IsCustom = isCustom;
+            Name = name; ImagePath = image; Template = template; IsCustom = custom;
         }
 
-        public Panel CreatePanel(EventHandler onAddClick)
+        public Panel CreatePanel(EventHandler onAdd)
         {
-            Panel = new Panel { Size = new Size(880, 340), BackColor = Color.White, Margin = new Padding(0, 0, 0, 25) };
-            Panel.Paint += (s, e) => ControlPaint.DrawBorder(e.Graphics, Panel.ClientRectangle, Color.FromArgb(220, 220, 220), ButtonBorderStyle.Solid);
+            Panel = new Panel { Size = new Size(880, 360), BackColor = Color.White, Margin = new Padding(0, 0, 0, 25), BorderStyle = BorderStyle.FixedSingle };
 
-            PictureBox pb = new PictureBox { Size = new Size(220, 220), Location = new Point(20, 20), SizeMode = PictureBoxSizeMode.Zoom };
-            try { pb.Image = Image.FromFile(System.IO.Path.Combine(Application.StartupPath, "img", ImagePath)); } catch { pb.BackColor = Color.FromArgb(245, 245, 245); }
-            Panel.Controls.Add(pb);
+            PictureBox pic = new PictureBox
+            {
+                Size = new Size(220, 220),
+                Location = new Point(20, 20),
+                SizeMode = PictureBoxSizeMode.Zoom
+            };
 
-            Label lblName = new Label { Text = Name, Font = new Font("Segoe UI", 22, FontStyle.Bold), Location = new Point(260, 15), AutoSize = true };
+            if (File.Exists(ImagePath))
+            {
+                pic.Image = Image.FromFile(ImagePath);
+            }
+            else
+            {
+                pic.BackColor = Color.LightGray;
+            }
+            Panel.Controls.Add(pic);
+
+            Label lblName = new Label { Text = Name, Font = new Font("Segoe UI", 20, FontStyle.Bold), Location = new Point(260, 15), AutoSize = true };
             Panel.Controls.Add(lblName);
 
-            int curY = 65;
+            Label lblBasePrice = new Label { Text = $"базовая цена: {Template.price} ₽", Font = new Font("Segoe UI", 10), ForeColor = Color.DarkGray, Location = new Point(lblName.Right + 15, 26), AutoSize = true };
+            Panel.Controls.Add(lblBasePrice);
+
+            int curY = 70;
             if (IsCustom)
             {
-                cbDough = new ComboBox { Location = new Point(260, curY), Width = 200, DropDownStyle = ComboBoxStyle.DropDownList, Font = new Font("Segoe UI", 9) };
+                cbDough = new ComboBox { Location = new Point(260, curY), Width = 200, DropDownStyle = ComboBoxStyle.DropDownList };
                 foreach (var d in ToppingCatalog.Doughs) cbDough.Items.Add($"{d.name} (+{d.price}₽)");
                 cbDough.SelectedIndex = 0;
 
-                cbSauce = new ComboBox { Location = new Point(480, curY), Width = 200, DropDownStyle = ComboBoxStyle.DropDownList, Font = new Font("Segoe UI", 9) };
+                cbSauce = new ComboBox { Location = new Point(480, curY), Width = 200, DropDownStyle = ComboBoxStyle.DropDownList };
                 foreach (var s in ToppingCatalog.Sauces) cbSauce.Items.Add($"{s.name} (+{s.price}₽)");
                 cbSauce.SelectedIndex = 0;
+
                 Panel.Controls.Add(cbDough); Panel.Controls.Add(cbSauce);
-                curY += 50;
+                curY += 45;
             }
 
-            // Равномерная сетка топпингов
             int tx = 260, ty = curY;
-            int colWidth = 200; // Увеличил ширину колонки
-            int rowHeight = 35; // Увеличил высоту строки
-
             foreach (var t in ToppingCatalog.Toppings)
             {
                 Label l = new Label { Text = $"{t.name} ({t.price}₽)", Location = new Point(tx, ty + 3), Width = 140, Font = new Font("Segoe UI", 8) };
-                NumericUpDown n = new NumericUpDown { Location = new Point(tx + 145, ty), Width = 45, Minimum = 0, Font = new Font("Segoe UI", 9) };
+                NumericUpDown n = new NumericUpDown { Location = new Point(tx + 145, ty), Width = 45, Maximum = 10 };
                 ToppingControls[t.name] = n;
                 Panel.Controls.Add(l); Panel.Controls.Add(n);
-
-                ty += rowHeight;
-                if (ty > 300) { ty = curY; tx += colWidth; }
+                ty += 42; if (ty > 320) { ty = curY; tx += 200; }
             }
 
             Button btn = new Button
             {
-                Text = "ДОБАВИТЬ В КОРЗИНУ",
-                Size = new Size(220, 55),
-                Location = new Point(20, 260),
+                Text = "В КОРЗИНУ",
+                Size = new Size(220, 60),
+                Location = new Point(20, 270),
                 BackColor = Color.FromArgb(255, 140, 0),
                 ForeColor = Color.White,
                 FlatStyle = FlatStyle.Flat,
-                Font = new Font("Segoe UI", 11, FontStyle.Bold),
-                Cursor = Cursors.Hand
+                Font = new Font("Segoe UI", 10, FontStyle.Bold)
             };
-            btn.FlatAppearance.BorderSize = 0;
-            btn.Click += onAddClick;
+            btn.Click += onAdd;
             Panel.Controls.Add(btn);
 
             return Panel;
@@ -87,9 +95,11 @@ namespace WITH_pattern
             PizzaBuilder b = new PizzaBuilder();
             b.Reset().SetName(Name).SetBasePrice(Template.price).SetIsCustom(IsCustom);
 
-            if (IsCustom)
+            if (IsCustom && cbDough != null && cbSauce != null)
             {
-                b.SetDough(cbDough.Text.Split('(')[0].Trim()).SetSauce(cbSauce.Text.Split('(')[0].Trim());
+                var dough = ToppingCatalog.Doughs[cbDough.SelectedIndex];
+                var sauce = ToppingCatalog.Sauces[cbSauce.SelectedIndex];
+                b.SetDough(dough.name).SetSauce(sauce.name);
             }
             else
             {
@@ -97,17 +107,24 @@ namespace WITH_pattern
                 foreach (var t in Template.Toppings) b.AddTopping(t.name);
             }
 
-            foreach (var ctrl in ToppingControls)
-            {
-                for (int i = 0; i < (int)ctrl.Value.Value; i++) b.AddTopping(ctrl.Key);
-            }
+            foreach (var kvp in ToppingControls)
+                for (int i = 0; i < (int)kvp.Value.Value; i++)
+                    b.AddTopping(kvp.Key);
+
             return b.GetResult();
         }
 
         public List<string> GetUserSelectedExtras()
         {
-            return ToppingControls.Where(c => c.Value.Value > 0)
-                                 .Select(c => $"{c.Key} x{c.Value.Value}").ToList();
+            return ToppingControls.Where(x => x.Value.Value > 0)
+                                  .Select(x => $"{x.Key} x{x.Value.Value}")
+                                  .ToList();
+        }
+
+        public void ResetSelection()
+        {
+            foreach (var n in ToppingControls.Values) n.Value = 0;
+            if (IsCustom) { cbDough.SelectedIndex = 0; cbSauce.SelectedIndex = 0; }
         }
     }
 }
