@@ -21,16 +21,10 @@ namespace WITH_pattern
             return total;
         }
 
-        public string GetDescription()
+        public string GetToppingsString()
         {
-            var summary = new List<string>();
-            if (Dough != null) summary.Add(Dough.name);
-            if (Sauce != null) summary.Add(Sauce.name);
-            if (Toppings.Count > 0)
-                summary.Add(string.Join(", ", Toppings.GroupBy(t => t.name).Select(g => $"{g.Key} x{g.Count()}")));
-            else summary.Add("Без топпингов");
-
-            return string.Join(" | ", summary);
+            if (Toppings.Count == 0) return "Без топпингов";
+            return string.Join(", ", Toppings.Select(t => t.name));
         }
     }
 }

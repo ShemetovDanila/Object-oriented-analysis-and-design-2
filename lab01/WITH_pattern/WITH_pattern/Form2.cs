@@ -4,14 +4,25 @@ namespace WITH_pattern
 {
     public partial class Form2 : Form
     {
-        private Form1 _main;
-        private ListBox lb;
-        public Form2(Form1 main)
+        private Form1 mainForm;
+        private ListBox listBoxHistory;
+
+        public Form2(Form1 owner)
         {
-            _main = main; this.Size = new System.Drawing.Size(300, 400);
-            lb = new ListBox { Dock = DockStyle.Fill };
-            this.Controls.Add(lb);
-            foreach (var h in _main.GetHistory()) lb.Items.Add(h);
+            mainForm = owner;
+            this.Text = "История заказов";
+            this.Size = new System.Drawing.Size(400, 600);
+            listBoxHistory = new ListBox
+            {
+                Dock = DockStyle.Fill,
+                Font = new System.Drawing.Font("Arial", 10)
+            };
+            this.Controls.Add(listBoxHistory);
+        }
+
+        public void AddOrderToHistory(string info)
+        {
+            listBoxHistory.Items.Add(info);
         }
     }
 }

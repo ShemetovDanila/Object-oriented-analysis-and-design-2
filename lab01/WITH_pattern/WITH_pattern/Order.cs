@@ -1,18 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace WITH_pattern
 {
     public class Order
     {
-        public int orderId { get; set; }
-        public string orderDate { get; set; }
-        public string status { get; set; }
-        public List<Pizza> Pizzas { get; set; } = new List<Pizza>();
+        public List<OrderItem> Items { get; set; } = new List<OrderItem>();
 
-        public void AddPizza(Pizza pizza) => Pizzas.Add(pizza);
+        public void AddPizza(Pizza pizza)
+        {
+            var existing = Items.FirstOrDefault(i => i.Pizza.name == pizza.name && i.Pizza.GetToppingsString() == pizza.GetToppingsString());
+            if (existing != null)
+            {
+                existing.Quantity++;
+            }
+            else
+            {
+                Items.Add(new OrderItem(pizza));
+            }
+        }
 
-        public int GetTotalOrderPrice() => Pizzas.Sum(p => p.CalculateTotal());
+        public void RemoveItem(OrderItem item)
+        {
+            Items.Remove(item);
+        }
+
+        public int GetTotalSum()
+        {
+            return Items.Sum(i => i.GetTotalPrice());
+        }
+
+        public int GetTotalPizzasCount()
+        {
+            return Items.Sum(i => i.Quantity);
+        }
     }
 }

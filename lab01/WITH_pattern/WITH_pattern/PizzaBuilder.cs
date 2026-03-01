@@ -8,14 +8,8 @@ namespace WITH_pattern
 
         public IPizzaBuilder Reset()
         {
-            // Инициализируем новый объект Pizza и пустой список топпингов
-            _pizza = new Pizza { Toppings = new List<Topping>() };
-            return this;
-        }
-
-        public IPizzaBuilder SetIsCustom(bool custom)
-        {
-            _pizza.custom = custom;
+            _pizza = new Pizza();
+            _pizza.Toppings = new List<Topping>();
             return this;
         }
 
@@ -31,21 +25,27 @@ namespace WITH_pattern
             return this;
         }
 
+        public IPizzaBuilder SetIsCustom(bool custom)
+        {
+            _pizza.custom = custom;
+            return this;
+        }
+
         public IPizzaBuilder SetDough(string dough)
         {
-            _pizza.Dough = ToppingCatalog.GetDoughByName(dough);
+            _pizza.Dough = ToppingCatalog.GetIngredient(dough) as Dough;
             return this;
         }
 
         public IPizzaBuilder SetSauce(string sauce)
         {
-            _pizza.Sauce = ToppingCatalog.GetSauceByName(sauce);
+            _pizza.Sauce = ToppingCatalog.GetIngredient(sauce) as Sauce;
             return this;
         }
 
         public IPizzaBuilder AddTopping(string topping)
         {
-            var t = ToppingCatalog.GetToppingByName(topping);
+            var t = ToppingCatalog.GetIngredient(topping) as Topping;
             if (t != null)
             {
                 _pizza.Toppings.Add(t);
@@ -53,6 +53,9 @@ namespace WITH_pattern
             return this;
         }
 
-        public Pizza GetResult() => _pizza;
+        public Pizza GetResult()
+        {
+            return _pizza;
+        }
     }
 }
