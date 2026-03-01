@@ -23,8 +23,9 @@ namespace WITH_pattern
 
         public string GetToppingsString()
         {
-            if (Toppings.Count == 0) return "Без топпингов";
-            return string.Join(", ", Toppings.Select(t => t.name));
+            if (Toppings.Count == 0) return "Стандартный состав";
+            var grouped = Toppings.GroupBy(t => t.name).Select(g => g.Count() > 1 ? $"{g.Key} x{g.Count()}" : g.Key);
+            return string.Join(", ", grouped);
         }
     }
 }

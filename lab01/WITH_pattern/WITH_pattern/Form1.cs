@@ -8,218 +8,135 @@ namespace WITH_pattern
 {
     public partial class Form1 : Form
     {
-        private Label lblTotalSum;
-        private Label lblTotalCount;
-        private FlowLayoutPanel panelMenu;
-        private FlowLayoutPanel panelCurrentOrder;
-        private Order currentOrder;
-        private Button btnCheckout;
-        private Button btnHistory;
-        private Form2 historyForm;
-        private List<string> orderHistoryList;
-        private PizzaDirector _director;
+        private Label lblSum, lblCount;
+        private FlowLayoutPanel flowOrder, flowMenu;
+        private Order order = new Order();
+        private List<string> history = new List<string>();
+        private PizzaDirector director = new PizzaDirector();
+        private Dictionary<OrderItem, List<string>> extraInfo = new Dictionary<OrderItem, List<string>>();
 
-        private PizzaMenuItem itemCustom;
-        private PizzaMenuItem itemMargarita;
-        private PizzaMenuItem itemPepperoni;
-        private PizzaMenuItem itemCountry;
-        private PizzaMenuItem itemHawaiian;
-        private PizzaMenuItem itemChicken;
+        private PizzaMenuItem itC, itM, itP, itK, itH, itCh;
 
         public Form1()
         {
-            this.Text = "Pizza Delivery";
-            this.Size = new Size(1600, 900);
-            this.StartPosition = FormStartPosition.CenterScreen;
-
-            lblTotalSum = new Label();
-            lblTotalCount = new Label();
-            panelMenu = new FlowLayoutPanel();
-            panelCurrentOrder = new FlowLayoutPanel();
-            currentOrder = new Order();
-            orderHistoryList = new List<string>();
-            _director = new PizzaDirector();
-
-            InitializeComponentsManual();
+            this.Text = "Pizza Master Pro";
+            this.Size = new Size(1550, 950);
+            this.MinimumSize = new Size(1200, 800);
+            this.BackColor = Color.FromArgb(242, 242, 242);
+            InitializeLayout();
         }
 
-        private void InitializeComponentsManual()
+        private void InitializeLayout()
         {
-            Panel panelRight = new Panel { BackColor = Color.FromArgb(255, 245, 200), Dock = DockStyle.Right, Width = 400 };
-            this.Controls.Add(panelRight);
+            // Правая панель (Корзина) - ЖЕСТКАЯ СТРУКТУРА
+            Panel pnlRight = new Panel { Dock = DockStyle.Right, Width = 420, BackColor = Color.White };
+            this.Controls.Add(pnlRight);
 
-            Label lblOrderTitle = new Label
-            {
-                Text = "Текущий заказ",
-                Font = new Font("Arial", 18, FontStyle.Bold),
-                Dock = DockStyle.Top,
-                Height = 60,
-                TextAlign = ContentAlignment.MiddleCenter,
-                BackColor = Color.FromArgb(255, 245, 200)
-            };
-            panelRight.Controls.Add(lblOrderTitle);
+            // 1. Заголовок (Top)
+            Panel pnlCartHeader = new Panel { Dock = DockStyle.Top, Height = 80, BackColor = Color.FromArgb(33, 33, 33) };
+            Label lblTitle = new Label { Text = "ВАШ ЗАКАЗ", Font = new Font("Segoe UI", 20, FontStyle.Bold), ForeColor = Color.White, Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleCenter };
+            pnlCartHeader.Controls.Add(lblTitle);
+            pnlRight.Controls.Add(pnlCartHeader);
 
-            panelCurrentOrder.Dock = DockStyle.Fill;
-            panelCurrentOrder.AutoScroll = true;
-            panelCurrentOrder.FlowDirection = FlowDirection.TopDown;
-            panelCurrentOrder.WrapContents = false;
-            panelCurrentOrder.Padding = new Padding(15, 65, 15, 15);
-            panelRight.Controls.Add(panelCurrentOrder);
+            // 2. Подвал (Bottom)
+            Panel pnlCartFooter = new Panel { Dock = DockStyle.Bottom, Height = 260, BackColor = Color.FromArgb(250, 250, 250), Padding = new Padding(20) };
+            pnlCartFooter.Paint += (s, e) => e.Graphics.DrawLine(new Pen(Color.LightGray, 1), 0, 0, 420, 0);
 
-            Panel panelBottomRight = new Panel { Dock = DockStyle.Bottom, Height = 230, BackColor = Color.FromArgb(255, 245, 200) };
-            panelRight.Controls.Add(panelBottomRight);
+            lblCount = new Label { Dock = DockStyle.Top, Height = 30, Font = new Font("Segoe UI", 10), ForeColor = Color.Gray };
+            lblSum = new Label { Dock = DockStyle.Top, Height = 50, Font = new Font("Segoe UI", 22, FontStyle.Bold), ForeColor = Color.FromArgb(255, 120, 0) };
 
-            lblTotalCount.Text = "Всего пицц: 0";
-            lblTotalCount.Font = new Font("Arial", 13, FontStyle.Bold);
-            lblTotalCount.Location = new Point(20, 20);
-            lblTotalCount.AutoSize = true;
-            panelBottomRight.Controls.Add(lblTotalCount);
+            Button btnPay = new Button { Text = "ОФОРМИТЬ ЗАКАЗ", Dock = DockStyle.Top, Height = 60, BackColor = Color.FromArgb(255, 140, 0), ForeColor = Color.White, FlatStyle = FlatStyle.Flat, Font = new Font("Segoe UI", 14, FontStyle.Bold), Cursor = Cursors.Hand };
+            btnPay.FlatAppearance.BorderSize = 0;
+            btnPay.Click += BtnPay_Click;
 
-            lblTotalSum.Text = "Итого: 0 руб.";
-            lblTotalSum.Font = new Font("Arial", 18, FontStyle.Bold);
-            lblTotalSum.Location = new Point(20, 55);
-            lblTotalSum.AutoSize = true;
-            panelBottomRight.Controls.Add(lblTotalSum);
+            Button btnH = new Button { Text = "ИСТОРИЯ ЗАКАЗОВ", Dock = DockStyle.Bottom, Height = 40, FlatStyle = FlatStyle.Flat, ForeColor = Color.DimGray, Font = new Font("Segoe UI", 9, FontStyle.Bold) };
+            btnH.Click += (s, e) => new Form2(history).Show();
 
-            btnCheckout = new Button
-            {
-                Text = "Оформить заказ",
-                Size = new Size(360, 50),
-                Location = new Point(20, 100),
-                BackColor = Color.FromArgb(255, 140, 0),
-                ForeColor = Color.White,
-                FlatStyle = FlatStyle.Flat,
-                Font = new Font("Arial", 14, FontStyle.Bold)
-            };
-            btnCheckout.FlatAppearance.BorderSize = 0;
-            btnCheckout.Click += BtnCheckout_Click;
-            panelBottomRight.Controls.Add(btnCheckout);
+            pnlCartFooter.Controls.AddRange(new Control[] { btnH, btnPay, lblSum, lblCount });
+            pnlRight.Controls.Add(pnlCartFooter);
 
-            btnHistory = new Button
-            {
-                Text = "📋 История заказов",
-                Size = new Size(360, 45),
-                Location = new Point(20, 165),
-                BackColor = Color.FromArgb(100, 100, 100),
-                ForeColor = Color.White,
-                FlatStyle = FlatStyle.Flat
-            };
-            btnHistory.FlatAppearance.BorderSize = 0;
-            btnHistory.Click += BtnHistory_Click;
-            panelBottomRight.Controls.Add(btnHistory);
+            // 3. Список (Fill) - ТЕПЕРЬ ОН ЗАЖАТ МЕЖДУ НИМИ
+            flowOrder = new FlowLayoutPanel { Dock = DockStyle.Fill, AutoScroll = true, FlowDirection = FlowDirection.TopDown, WrapContents = false, Padding = new Padding(15), BackColor = Color.White };
+            pnlRight.Controls.Add(flowOrder);
+            flowOrder.BringToFront();
 
-            Panel panelCenter = new Panel { Dock = DockStyle.Fill, BackColor = Color.White };
-            this.Controls.Add(panelCenter);
-
-            Label lblTitle = new Label { Text = "Меню пицц", Font = new Font("Arial", 28, FontStyle.Bold), Location = new Point(40, 30), AutoSize = true };
-            panelCenter.Controls.Add(lblTitle);
-
-            panelMenu.Location = new Point(40, 100);
-            panelMenu.Size = new Size(1100, 700);
-            panelMenu.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-            panelMenu.AutoScroll = true;
-            panelMenu.FlowDirection = FlowDirection.TopDown;
-            panelMenu.WrapContents = false;
-            panelCenter.Controls.Add(panelMenu);
+            // Левая панель (Меню)
+            flowMenu = new FlowLayoutPanel { Dock = DockStyle.Fill, AutoScroll = true, Padding = new Padding(30) };
+            this.Controls.Add(flowMenu);
 
             PizzaBuilder b = new PizzaBuilder();
-            _director.MakeCustomPizza(b); itemCustom = new PizzaMenuItem("🍕 Конструктор", 200, "myPizza.png", b.GetResult(), true);
-            _director.MakeMargarita(b); itemMargarita = new PizzaMenuItem("Маргарита", 450, "marg.png", b.GetResult(), false);
-            _director.MakePepperoni(b); itemPepperoni = new PizzaMenuItem("Пепперони", 550, "pep.png", b.GetResult(), false);
-            _director.MakeCountry(b); itemCountry = new PizzaMenuItem("Кантри", 500, "kant.png", b.GetResult(), false);
-            _director.MakeHawaiian(b); itemHawaiian = new PizzaMenuItem("Гавайская", 520, "pineapple.png", b.GetResult(), false);
-            _director.MakeChicken(b); itemChicken = new PizzaMenuItem("Куриная", 530, "chicken.png", b.GetResult(), false);
+            director.MakeCustomPizza(b); itC = new PizzaMenuItem("🍕 КОНСТРУКТОР", 200, "myPizza.png", b.GetResult(), true);
+            director.MakeMargarita(b); itM = new PizzaMenuItem("МАРГАРИТА", 450, "marg.png", b.GetResult(), false);
+            director.MakePepperoni(b); itP = new PizzaMenuItem("ПЕППЕРОНИ", 550, "pep.png", b.GetResult(), false);
+            director.MakeCountry(b); itK = new PizzaMenuItem("КАНТРИ", 500, "kant.png", b.GetResult(), false);
+            director.MakeHawaiian(b); itH = new PizzaMenuItem("ГАВАЙСКАЯ", 520, "pineapple.png", b.GetResult(), false);
+            director.MakeChicken(b); itCh = new PizzaMenuItem("КУРИНАЯ", 530, "chicken.png", b.GetResult(), false);
 
-            panelMenu.Controls.Add(itemCustom.CreatePanel(BtnAdd_Click));
-            panelMenu.Controls.Add(itemMargarita.CreatePanel(BtnAdd_Click));
-            panelMenu.Controls.Add(itemPepperoni.CreatePanel(BtnAdd_Click));
-            panelMenu.Controls.Add(itemCountry.CreatePanel(BtnAdd_Click));
-            panelMenu.Controls.Add(itemHawaiian.CreatePanel(BtnAdd_Click));
-            panelMenu.Controls.Add(itemChicken.CreatePanel(BtnAdd_Click));
+            flowMenu.Controls.AddRange(new Control[] { itC.CreatePanel(OnAdd), itM.CreatePanel(OnAdd), itP.CreatePanel(OnAdd), itK.CreatePanel(OnAdd), itH.CreatePanel(OnAdd), itCh.CreatePanel(OnAdd) });
+            UpdateUI();
         }
 
-        private void BtnAdd_Click(object sender, EventArgs e)
+        private void OnAdd(object sender, EventArgs e)
         {
-            Button btn = (Button)sender;
-            Panel p = (Panel)btn.Parent;
-            PizzaMenuItem selected = null;
+            PizzaMenuItem sel = null; Panel p = (Panel)((Button)sender).Parent;
+            if (p == itC.Panel) sel = itC;
+            else if (p == itM.Panel) sel = itM;
+            else if (p == itP.Panel) sel = itP;
+            else if (p == itK.Panel) sel = itK; else if (p == itH.Panel) sel = itH; else if (p == itCh.Panel) sel = itCh;
 
-            if (p == itemCustom.Panel) selected = itemCustom;
-            else if (p == itemMargarita.Panel) selected = itemMargarita;
-            else if (p == itemPepperoni.Panel) selected = itemPepperoni;
-            else if (p == itemCountry.Panel) selected = itemCountry;
-            else if (p == itemHawaiian.Panel) selected = itemHawaiian;
-            else if (p == itemChicken.Panel) selected = itemChicken;
-
-            if (selected != null)
+            if (sel != null)
             {
-                currentOrder.AddPizza(selected.CreatePizzaWithToppings());
-                UpdateOrderDisplay();
-                foreach (var ctrl in selected.ToppingControls) ctrl.Value.Value = 0;
+                var pizza = sel.CreatePizzaWithToppings();
+                order.AddPizza(pizza);
+                var item = order.Items.Last();
+                extraInfo[item] = sel.GetUserSelectedExtras();
+                UpdateUI();
+                foreach (var ctrl in sel.ToppingControls) ctrl.Value.Value = 0;
             }
         }
 
-        private void UpdateOrderDisplay()
+        private void UpdateUI()
         {
-            panelCurrentOrder.Controls.Clear();
-            foreach (var orderItem in currentOrder.Items)
+            flowOrder.Controls.Clear();
+            foreach (var item in order.Items)
             {
-                panelCurrentOrder.Controls.Add(CreateOrderItemPanel(orderItem));
+                Panel card = new Panel { Size = new Size(365, 145), BackColor = Color.White, Margin = new Padding(0, 0, 0, 15) };
+                card.Paint += (s, e) => ControlPaint.DrawBorder(e.Graphics, card.ClientRectangle, Color.FromArgb(230, 230, 230), ButtonBorderStyle.Solid);
+
+                Label lblN = new Label { Text = item.Pizza.name, Font = new Font("Segoe UI", 11, FontStyle.Bold), Location = new Point(15, 10), AutoSize = true };
+                Label lblD = new Label { Text = $"{item.Pizza.Dough.name} / {item.Pizza.Sauce.name}", Location = new Point(15, 32), ForeColor = Color.Gray, Font = new Font("Segoe UI", 8), AutoSize = true };
+
+                string extras = (extraInfo.ContainsKey(item) && extraInfo[item].Count > 0)
+                    ? "Доп: " + string.Join(", ", extraInfo[item])
+                    : (item.Pizza.custom ? "Пустая пицца" : "Стандартный состав");
+
+                Label lblT = new Label { Text = extras, Location = new Point(15, 50), Size = new Size(335, 45), Font = new Font("Segoe UI", 7), ForeColor = Color.DimGray };
+                Label lblP = new Label { Text = $"{item.GetTotalPrice()} ₽", Location = new Point(15, 105), Font = new Font("Segoe UI", 12, FontStyle.Bold), ForeColor = Color.OrangeRed, AutoSize = true };
+
+                // Компактный счетчик
+                Panel qtyPnl = new Panel { Size = new Size(110, 36), Location = new Point(235, 100), BorderStyle = BorderStyle.FixedSingle };
+                Button btnM = new Button { Text = "-", Size = new Size(32, 34), Location = new Point(0, 0), FlatStyle = FlatStyle.Flat };
+                btnM.Click += (s, e) => { if (item.Quantity > 1) item.Quantity--; else order.RemoveItem(item); UpdateUI(); };
+                Button btnP = new Button { Text = "+", Size = new Size(32, 34), Location = new Point(76, 0), FlatStyle = FlatStyle.Flat };
+                btnP.Click += (s, e) => { item.Quantity++; UpdateUI(); };
+                Label lblQ = new Label { Text = item.Quantity.ToString(), Size = new Size(44, 34), Location = new Point(32, 0), TextAlign = ContentAlignment.MiddleCenter, Font = new Font("Segoe UI", 10, FontStyle.Bold) };
+
+                qtyPnl.Controls.AddRange(new Control[] { btnM, lblQ, btnP });
+                card.Controls.AddRange(new Control[] { lblN, lblD, lblT, lblP, qtyPnl });
+                flowOrder.Controls.Add(card);
             }
-            lblTotalSum.Text = $"Итого: {currentOrder.GetTotalSum()} руб.";
-            lblTotalCount.Text = $"Всего пицц: {currentOrder.GetTotalPizzasCount()}";
+            lblSum.Text = $"{order.GetTotalSum()} ₽";
+            lblCount.Text = $"К оплате ({order.GetTotalPizzasCount()} шт.):";
         }
 
-        private Panel CreateOrderItemPanel(OrderItem orderItem)
+        private void BtnPay_Click(object sender, EventArgs e)
         {
-            Panel p = new Panel { Size = new Size(350, 120), BackColor = Color.White, BorderStyle = BorderStyle.FixedSingle, Margin = new Padding(0, 0, 0, 10) };
-
-            Label name = new Label { Text = orderItem.Pizza.name, Font = new Font("Arial", 11, FontStyle.Bold), Location = new Point(10, 10), AutoSize = true };
-            p.Controls.Add(name);
-
-            Panel qtyContainer = new Panel { Size = new Size(100, 30), Location = new Point(235, 10), BorderStyle = BorderStyle.FixedSingle };
-            Button btnMinus = new Button { Text = "−", Size = new Size(30, 30), Location = new Point(0, -1), FlatStyle = FlatStyle.Flat };
-            btnMinus.FlatAppearance.BorderSize = 0;
-            btnMinus.Click += (s, e) =>
-            {
-                if (orderItem.Quantity > 1) { orderItem.Quantity--; UpdateOrderDisplay(); }
-                else { currentOrder.RemoveItem(orderItem); UpdateOrderDisplay(); }
-            };
-
-            Button btnPlus = new Button { Text = "+", Size = new Size(30, 30), Location = new Point(68, -1), FlatStyle = FlatStyle.Flat };
-            btnPlus.FlatAppearance.BorderSize = 0;
-            btnPlus.Click += (s, e) => { orderItem.Quantity++; UpdateOrderDisplay(); };
-
-            Label qty = new Label { Text = orderItem.Quantity.ToString(), Size = new Size(38, 28), Location = new Point(31, 1), TextAlign = ContentAlignment.MiddleCenter, Font = new Font("Arial", 10, FontStyle.Bold) };
-
-            qtyContainer.Controls.Add(btnMinus);
-            qtyContainer.Controls.Add(btnPlus);
-            qtyContainer.Controls.Add(qty);
-            p.Controls.Add(qtyContainer);
-
-            Label details = new Label { Text = $"{orderItem.Pizza.Dough.name} | {orderItem.Pizza.Sauce.name}", Location = new Point(10, 35), ForeColor = Color.Gray, AutoSize = true };
-            Label toppings = new Label { Text = orderItem.Pizza.GetToppingsString(), Location = new Point(10, 55), Size = new Size(330, 35), ForeColor = Color.DimGray, Font = new Font("Arial", 7) };
-            Label price = new Label { Text = $"{orderItem.GetTotalPrice()} руб.", Font = new Font("Arial", 10, FontStyle.Bold), Location = new Point(10, 95), AutoSize = true };
-
-            p.Controls.Add(details); p.Controls.Add(toppings); p.Controls.Add(price);
-            return p;
-        }
-
-        private void BtnCheckout_Click(object sender, EventArgs e)
-        {
-            if (currentOrder.Items.Count == 0) return;
-            string entry = $"{DateTime.Now.ToShortTimeString()} - Заказ на {currentOrder.GetTotalSum()} руб.";
-            orderHistoryList.Add(entry);
-            if (historyForm != null) historyForm.AddOrderToHistory(entry);
-            MessageBox.Show("Заказ оформлен!");
-            currentOrder = new Order();
-            UpdateOrderDisplay();
-        }
-
-        private void BtnHistory_Click(object sender, EventArgs e)
-        {
-            if (historyForm == null || historyForm.IsDisposed) historyForm = new Form2(this);
-            historyForm.Show();
+            if (order.Items.Count == 0) return;
+            string report = $"ЗАКАЗ [{DateTime.Now:HH:mm}]\n" + string.Join("\n", order.Items.Select(i =>
+                $"• {i.Pizza.name} x{i.Quantity} ({i.GetTotalPrice()}₽)\n  Основа: {i.Pizza.Dough.name}, {i.Pizza.Sauce.name}\n  Допы: {(extraInfo.ContainsKey(i) ? string.Join(", ", extraInfo[i]) : "-")}"));
+            history.Insert(0, report + $"\nСУММА: {order.GetTotalSum()}₽\n" + new string('=', 40));
+            order = new Order(); extraInfo.Clear(); UpdateUI();
+            MessageBox.Show("Заказ оформлен!", "Pizza Shop");
         }
     }
 }
