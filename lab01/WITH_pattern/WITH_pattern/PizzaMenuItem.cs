@@ -34,13 +34,10 @@ namespace WITH_pattern
             };
 
             if (File.Exists(ImagePath))
-            {
                 pic.Image = Image.FromFile(ImagePath);
-            }
             else
-            {
                 pic.BackColor = Color.LightGray;
-            }
+
             Panel.Controls.Add(pic);
 
             Label lblName = new Label { Text = Name, Font = new Font("Segoe UI", 20, FontStyle.Bold), Location = new Point(260, 15), AutoSize = true };
@@ -60,7 +57,8 @@ namespace WITH_pattern
                 foreach (var s in ToppingCatalog.Sauces) cbSauce.Items.Add($"{s.name} (+{s.price}₽)");
                 cbSauce.SelectedIndex = 0;
 
-                Panel.Controls.Add(cbDough); Panel.Controls.Add(cbSauce);
+                Panel.Controls.Add(cbDough);
+                Panel.Controls.Add(cbSauce);
                 curY += 45;
             }
 
@@ -70,8 +68,10 @@ namespace WITH_pattern
                 Label l = new Label { Text = $"{t.name} ({t.price}₽)", Location = new Point(tx, ty + 3), Width = 140, Font = new Font("Segoe UI", 8) };
                 NumericUpDown n = new NumericUpDown { Location = new Point(tx + 145, ty), Width = 45, Maximum = 10 };
                 ToppingControls[t.name] = n;
-                Panel.Controls.Add(l); Panel.Controls.Add(n);
-                ty += 42; if (ty > 320) { ty = curY; tx += 200; }
+                Panel.Controls.Add(l);
+                Panel.Controls.Add(n);
+                ty += 42;
+                if (ty > 320) { ty = curY; tx += 200; }
             }
 
             Button btn = new Button
@@ -99,12 +99,18 @@ namespace WITH_pattern
             {
                 var dough = ToppingCatalog.Doughs[cbDough.SelectedIndex];
                 var sauce = ToppingCatalog.Sauces[cbSauce.SelectedIndex];
-                b.SetDough(dough.name).SetSauce(sauce.name);
+
+                b.SetDough(dough.name)
+                 .SetSauce(sauce.name)
+                 .SetBasePrice(Template.price + dough.price + sauce.price);
             }
             else
             {
-                b.SetDough(Template.Dough.name).SetSauce(Template.Sauce.name);
-                foreach (var t in Template.Toppings) b.AddTopping(t.name);
+                b.SetDough(Template.Dough.name)
+                 .SetSauce(Template.Sauce.name);
+
+                foreach (var t in Template.Toppings)
+                    b.AddTopping(t.name);
             }
 
             foreach (var kvp in ToppingControls)
@@ -116,15 +122,23 @@ namespace WITH_pattern
 
         public List<string> GetUserSelectedExtras()
         {
-            return ToppingControls.Where(x => x.Value.Value > 0)
-                                  .Select(x => $"{x.Key} x{x.Value.Value}")
-                                  .ToList();
+            return ToppingControls
+                .Where(x => x.Value.Value > 0)
+                .OrderBy(x => x.Key)
+                .Select(x => $"{x.Key} x{x.Value.Value}")
+                .ToList();
         }
 
         public void ResetSelection()
         {
-            foreach (var n in ToppingControls.Values) n.Value = 0;
-            if (IsCustom) { cbDough.SelectedIndex = 0; cbSauce.SelectedIndex = 0; }
+            foreach (var n in ToppingControls.Values)
+                n.Value = 0;
+
+            if (IsCustom && cbDough != null)
+            {
+                cbDough.SelectedIndex = 0;
+                cbSauce.SelectedIndex = 0;
+            }
         }
     }
 }

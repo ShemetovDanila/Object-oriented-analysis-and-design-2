@@ -85,23 +85,18 @@ namespace WITH_pattern
 
             if (sel != null)
             {
-                var pizza = sel.CreatePizzaWithToppings();
+                var newPizza = sel.CreatePizzaWithToppings();
                 var extras = sel.GetUserSelectedExtras();
 
-                string currentKey = $"{pizza.name}|{pizza.Dough.name}|{pizza.Sauce.name}|{string.Join(",", extras)}";
-
-                OrderItem existing = null;
-                foreach (var item in order.Items)
+                OrderItem existing = order.Items.FirstOrDefault(item =>
                 {
                     var itemExtras = extraInfo.ContainsKey(item) ? extraInfo[item] : new List<string>();
-                    string itemKey = $"{item.Pizza.name}|{item.Pizza.Dough.name}|{item.Pizza.Sauce.name}|{string.Join(",", itemExtras)}";
 
-                    if (itemKey == currentKey)
-                    {
-                        existing = item;
-                        break;
-                    }
-                }
+                    return item.Pizza.name == newPizza.name
+                        && item.Pizza.Dough.name == newPizza.Dough.name
+                        && item.Pizza.Sauce.name == newPizza.Sauce.name
+                        && itemExtras.OrderBy(x => x).SequenceEqual(extras.OrderBy(x => x));
+                });
 
                 if (existing != null)
                 {
@@ -109,7 +104,7 @@ namespace WITH_pattern
                 }
                 else
                 {
-                    order.AddPizza(pizza);
+                    order.AddPizza(newPizza);
                     var newItem = order.Items.Last();
                     extraInfo[newItem] = extras;
                 }
@@ -157,7 +152,9 @@ namespace WITH_pattern
             string report = $"ЗАКАЗ [{DateTime.Now:HH:mm}]\n" + string.Join("\n", order.Items.Select(i =>
                 $"• {i.Pizza.name} x{i.Quantity} ({i.GetTotalPrice()}₽)\n  Основа: {i.Pizza.Dough.name}, {i.Pizza.Sauce.name}\n  Допы: {(extraInfo.ContainsKey(i) ? string.Join(", ", extraInfo[i]) : "-")}"));
             history.Insert(0, report + $"\nСУММА: {order.GetTotalSum()}₽\n" + new string('=', 40));
-            order = new Order(); extraInfo.Clear(); UpdateUI();
+            order = new Order();
+            extraInfo.Clear();
+            UpdateUI();
             MessageBox.Show("Заказ оформлен!", "Pizza Shop");
         }
     }

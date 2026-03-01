@@ -9,7 +9,12 @@ namespace WITH_pattern
 
         public void AddPizza(Pizza pizza)
         {
-            var existing = Items.FirstOrDefault(i => i.Pizza.name == pizza.name && i.Pizza.GetToppingsString() == pizza.GetToppingsString());
+            var existing = Items.FirstOrDefault(i =>
+                i.Pizza.name == pizza.name &&
+                i.Pizza.Dough == pizza.Dough &&
+                i.Pizza.Sauce == pizza.Sauce &&
+                i.Pizza.GetToppingsString() == pizza.GetToppingsString());
+
             if (existing != null)
             {
                 existing.Quantity++;
