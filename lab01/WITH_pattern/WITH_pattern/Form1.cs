@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace WITH_pattern
@@ -146,37 +147,26 @@ namespace WITH_pattern
             panelMenu.Padding = new Padding(15);
             panelCenter.Controls.Add(panelMenu);
 
-            var defaultDough = ToppingCatalog.GetDoughByName("Классическое");
-            var defaultSauce = ToppingCatalog.GetSauceByName("Томатный");
-
             // === СОЗДАНИЕ ПИЦЦ ЧЕРЕЗ BUILDER PATTERN ===
-            itemCustom = new PizzaMenuItem("🍕 Конструктор", 200, "myPizza.png",
-                new Pizza("Ваша пицца", defaultDough, defaultSauce, 200, true), true);
+            var builder = new PizzaBuilder();
 
-            var builderMargarita = new PizzaBuilder();
-            _director.MakeMargarita(builderMargarita);
-            Pizza pizzaMargarita = builderMargarita.GetResult();
-            itemMargarita = new PizzaMenuItem("Маргарита", 450, "marg.png", pizzaMargarita, false);
+            _director.MakeCustomPizza(builder);
+            itemCustom = new PizzaMenuItem("🍕 Конструктор", 200, builder.GetResult());
 
-            var builderPepperoni = new PizzaBuilder();
-            _director.MakePepperoni(builderPepperoni);
-            Pizza pizzaPepperoni = builderPepperoni.GetResult();
-            itemPepperoni = new PizzaMenuItem("Пепперони", 550, "pep.png", pizzaPepperoni, false);
+            _director.MakeMargarita(builder);
+            itemMargarita = new PizzaMenuItem("Маргарита", 450, builder.GetResult());
 
-            var builderCountry = new PizzaBuilder();
-            _director.MakeCountry(builderCountry);
-            Pizza pizzaCountry = builderCountry.GetResult();
-            itemCountry = new PizzaMenuItem("Кантри", 500, "kant.png", pizzaCountry, false);
+            _director.MakePepperoni(builder);
+            itemPepperoni = new PizzaMenuItem("Пепперони", 550, builder.GetResult());
 
-            var builderHawaiian = new PizzaBuilder();
-            _director.MakeHawaiian(builderHawaiian);
-            Pizza pizzaHawaiian = builderHawaiian.GetResult();
-            itemHawaiian = new PizzaMenuItem("Гавайская", 520, "pineapple.png", pizzaHawaiian, false);
+            _director.MakeCountry(builder);
+            itemCountry = new PizzaMenuItem("Кантри", 500, builder.GetResult());
 
-            var builderChicken = new PizzaBuilder();
-            _director.MakeChicken(builderChicken);
-            Pizza pizzaChicken = builderChicken.GetResult();
-            itemChicken = new PizzaMenuItem("Куриная", 530, "chicken.png", pizzaChicken, false);
+            _director.MakeHawaiian(builder);
+            itemHawaiian = new PizzaMenuItem("Гавайская", 520, builder.GetResult());
+
+            _director.MakeChicken(builder);
+            itemChicken = new PizzaMenuItem("Куриная", 530, builder.GetResult());
 
             panelMenu.Controls.Add(itemCustom.CreatePanel(BtnAdd_Click));
             panelMenu.Controls.Add(itemMargarita.CreatePanel(BtnAdd_Click));
@@ -191,12 +181,7 @@ namespace WITH_pattern
             if (historyForm == null || historyForm.IsDisposed)
             {
                 historyForm = new Form2(this);
-
-                foreach (string order in orderHistoryList)
-                {
-                    historyForm.AddOrderToHistory(order);
-                }
-
+                foreach (string order in orderHistoryList) historyForm.AddOrderToHistory(order);
                 historyForm.Show();
             }
             else
@@ -221,14 +206,11 @@ namespace WITH_pattern
 
             if (item != null)
             {
-                Pizza pizza = item.CreatePizzaWithToppings();
+                Pizza pizza = item.CreatePizza(new PizzaBuilder());
                 currentOrder.AddPizza(pizza);
                 UpdateOrderDisplay();
 
-                foreach (var kvp in item.ToppingControls)
-                {
-                    kvp.Value.Value = 0;
-                }
+                foreach (var kvp in item.ToppingControls) kvp.Value.Value = 0;
             }
         }
 
@@ -236,14 +218,19 @@ namespace WITH_pattern
         {
             panelCurrentOrder.Controls.Clear();
 
-            foreach (OrderItem orderItem in currentOrder.Items)
+            // Группируем пиццы для визуализации (по имени и составу)
+            var groupedItems = currentOrder.Pizzas
+                .GroupBy(p => p.name + p.GetDescription())
+                .Select(g => new OrderItem(g.First()) { Quantity = g.Count() });
+
+            foreach (OrderItem orderItem in groupedItems)
             {
                 Panel itemPanel = CreateOrderItemPanel(orderItem);
                 panelCurrentOrder.Controls.Add(itemPanel);
             }
 
-            lblTotalSum.Text = $"Итого: {currentOrder.GetTotalSum()} руб.";
-            lblTotalCount.Text = $"Всего пицц: {currentOrder.GetTotalPizzasCount()}";
+            lblTotalSum.Text = $"Итого: {currentOrder.GetTotalOrderPrice()} руб.";
+            lblTotalCount.Text = $"Всего пицц: {currentOrder.Pizzas.Count}";
         }
 
         private Panel CreateOrderItemPanel(OrderItem orderItem)
@@ -256,7 +243,7 @@ namespace WITH_pattern
             panel.Padding = new Padding(10);
 
             Label lblName = new Label();
-            lblName.Text = orderItem.Pizza.Name;
+            lblName.Text = orderItem.Pizza.name;
             lblName.Font = new Font("Arial", 12, FontStyle.Bold);
             lblName.Location = new Point(10, 10);
             lblName.AutoSize = true;
@@ -275,10 +262,16 @@ namespace WITH_pattern
             btnMinus.Location = new Point(1, 1);
             btnMinus.Font = new Font("Arial", 16, FontStyle.Bold);
             btnMinus.BackColor = Color.White;
-            btnMinus.ForeColor = Color.Black;
             btnMinus.FlatStyle = FlatStyle.Flat;
             btnMinus.FlatAppearance.BorderSize = 0;
-            btnMinus.Click += (s, ev) => DecreaseQuantity_Click(orderItem);
+            btnMinus.Click += (s, ev) => {
+                var toRemove = currentOrder.Pizzas.FirstOrDefault(p => p.name == orderItem.Pizza.name && p.GetDescription() == orderItem.Pizza.GetDescription());
+                if (toRemove != null)
+                {
+                    currentOrder.Pizzas.Remove(toRemove);
+                    UpdateOrderDisplay();
+                }
+            };
             quantityPanel.Controls.Add(btnMinus);
 
             Button btnPlus = new Button();
@@ -287,24 +280,24 @@ namespace WITH_pattern
             btnPlus.Location = new Point(69, 1);
             btnPlus.Font = new Font("Arial", 16, FontStyle.Bold);
             btnPlus.BackColor = Color.White;
-            btnPlus.ForeColor = Color.Black;
             btnPlus.FlatStyle = FlatStyle.Flat;
             btnPlus.FlatAppearance.BorderSize = 0;
-            btnPlus.Click += (s, ev) => IncreaseQuantity_Click(orderItem);
+            btnPlus.Click += (s, ev) => {
+                currentOrder.AddPizza(orderItem.Pizza);
+                UpdateOrderDisplay();
+            };
             quantityPanel.Controls.Add(btnPlus);
 
-            orderItem.lblQuantity = new Label();
-            orderItem.lblQuantity.Text = $"{orderItem.Quantity}";
-            orderItem.lblQuantity.Font = new Font("Arial", 13, FontStyle.Bold);
-            orderItem.lblQuantity.ForeColor = Color.Black;
-            orderItem.lblQuantity.Location = new Point(31, 4);
-            orderItem.lblQuantity.Size = new Size(38, 26);
-            orderItem.lblQuantity.TextAlign = ContentAlignment.MiddleCenter;
-            orderItem.lblQuantity.AutoSize = false;
-            quantityPanel.Controls.Add(orderItem.lblQuantity);
+            Label lblQ = new Label();
+            lblQ.Text = $"{orderItem.Quantity}";
+            lblQ.Font = new Font("Arial", 13, FontStyle.Bold);
+            lblQ.Location = new Point(31, 4);
+            lblQ.Size = new Size(38, 26);
+            lblQ.TextAlign = ContentAlignment.MiddleCenter;
+            quantityPanel.Controls.Add(lblQ);
 
             Label lblDoughSauce = new Label();
-            lblDoughSauce.Text = $"{orderItem.Pizza.Dough.Name} | {orderItem.Pizza.Sauce.Name}";
+            lblDoughSauce.Text = $"{orderItem.Pizza.Dough.name} | {orderItem.Pizza.Sauce.name}";
             lblDoughSauce.Font = new Font("Arial", 8, FontStyle.Regular);
             lblDoughSauce.ForeColor = Color.Gray;
             lblDoughSauce.Location = new Point(10, 38);
@@ -312,7 +305,7 @@ namespace WITH_pattern
             panel.Controls.Add(lblDoughSauce);
 
             Label lblToppings = new Label();
-            lblToppings.Text = orderItem.Pizza.GetToppingsString();
+            lblToppings.Text = orderItem.Pizza.GetDescription();
             lblToppings.Font = new Font("Arial", 8, FontStyle.Regular);
             lblToppings.ForeColor = Color.DimGray;
             lblToppings.Location = new Point(10, 58);
@@ -321,89 +314,29 @@ namespace WITH_pattern
             panel.Controls.Add(lblToppings);
 
             Label lblPrice = new Label();
-            lblPrice.Text = $"{orderItem.GetTotalPrice()} руб.";
+            lblPrice.Text = $"{orderItem.CalculateTotal()} руб.";
             lblPrice.Font = new Font("Arial", 11, FontStyle.Bold);
             lblPrice.Location = new Point(10, 90);
             lblPrice.AutoSize = true;
             panel.Controls.Add(lblPrice);
 
-            orderItem.Panel = panel;
             return panel;
-        }
-
-        private void DecreaseQuantity_Click(OrderItem orderItem)
-        {
-            if (orderItem.Quantity > 1)
-            {
-                orderItem.Quantity--;
-                orderItem.UpdateQuantityDisplay();
-                UpdateOrderDisplay();
-            }
-            else
-            {
-                currentOrder.RemoveItem(orderItem);
-                UpdateOrderDisplay();
-            }
-        }
-
-        private void IncreaseQuantity_Click(OrderItem orderItem)
-        {
-            if (orderItem.Quantity < 99)
-            {
-                orderItem.Quantity++;
-                orderItem.UpdateQuantityDisplay();
-                UpdateOrderDisplay();
-            }
-            else
-            {
-                MessageBox.Show("Максимум 99 пицц одного вида!", "Лимит", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
-        private void RemoveItem_Click(OrderItem orderItem)
-        {
-            currentOrder.RemoveItem(orderItem);
-            UpdateOrderDisplay();
         }
 
         private void BtnCheckout_Click(object sender, EventArgs e)
         {
-            if (currentOrder.Items.Count == 0)
+            if (currentOrder.Pizzas.Count == 0)
             {
                 MessageBox.Show("Добавьте пиццы в заказ!");
                 return;
             }
 
-            string historyEntry = $"{DateTime.Now.ToShortTimeString()} - Заказ на {currentOrder.GetTotalSum()} руб. ({currentOrder.GetTotalPizzasCount()} пицц)\n";
-
-            foreach (OrderItem item in currentOrder.Items)
-            {
-                historyEntry += $"  • {item.Quantity}x {item.Pizza.Name}";
-                historyEntry += $" [{item.Pizza.Dough.Name}, {item.Pizza.Sauce.Name}]";
-                string extras = item.Pizza.GetToppingsString();
-                if (extras != "Без топпингов")
-                {
-                    historyEntry += $" | {extras}";
-                }
-                historyEntry += "\n";
-            }
-
+            string historyEntry = $"{DateTime.Now.ToShortTimeString()} - Заказ на {currentOrder.GetTotalOrderPrice()} руб. ({currentOrder.Pizzas.Count} пицц)\n";
             orderHistoryList.Add(historyEntry);
 
-            if (historyForm != null && !historyForm.IsDisposed)
-            {
-                historyForm.AddOrderToHistory(historyEntry);
-            }
+            if (historyForm != null && !historyForm.IsDisposed) historyForm.AddOrderToHistory(historyEntry);
 
-            string orderText = $"Заказ оформлен!\nВсего пицц: {currentOrder.GetTotalPizzasCount()}\n";
-            orderText += $"Сумма: {currentOrder.GetTotalSum()} руб.\n\n";
-
-            foreach (OrderItem item in currentOrder.Items)
-            {
-                orderText += $"{item.Quantity}x {item.Pizza.Name} - {item.GetTotalPrice()} руб.\n";
-            }
-
-            MessageBox.Show(orderText, "Заказ успешно оформлен!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show($"Заказ оформлен!\nСумма: {currentOrder.GetTotalOrderPrice()} руб.", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             currentOrder = new Order();
             UpdateOrderDisplay();

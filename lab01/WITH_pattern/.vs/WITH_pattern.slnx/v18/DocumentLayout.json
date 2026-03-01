@@ -7,60 +7,56 @@
       "RelativeMoniker": "D:0:0:{A26F6403-4C6C-8985-DFA2-4C39878E392A}|WITH_pattern\\WITH_pattern.csproj|solutionrelative:with_pattern\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A26F6403-4C6C-8985-DFA2-4C39878E392A}|WITH_pattern\\WITH_pattern.csproj|d:\\ooap\\object-oriented-analysis-and-design-2\\lab01\\with_pattern\\with_pattern\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A26F6403-4C6C-8985-DFA2-4C39878E392A}|WITH_pattern\\WITH_pattern.csproj|solutionrelative:with_pattern\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A26F6403-4C6C-8985-DFA2-4C39878E392A}|WITH_pattern\\WITH_pattern.csproj|d:\\ooap\\object-oriented-analysis-and-design-2\\lab01\\with_pattern\\with_pattern\\pizzadirector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A26F6403-4C6C-8985-DFA2-4C39878E392A}|WITH_pattern\\WITH_pattern.csproj|solutionrelative:with_pattern\\pizzadirector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A26F6403-4C6C-8985-DFA2-4C39878E392A}|WITH_pattern\\WITH_pattern.csproj|d:\\ooap\\object-oriented-analysis-and-design-2\\lab01\\with_pattern\\with_pattern\\pizzabuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A26F6403-4C6C-8985-DFA2-4C39878E392A}|WITH_pattern\\WITH_pattern.csproj|solutionrelative:with_pattern\\pizzabuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A26F6403-4C6C-8985-DFA2-4C39878E392A}|WITH_pattern\\WITH_pattern.csproj|d:\\ooap\\object-oriented-analysis-and-design-2\\lab01\\with_pattern\\with_pattern\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A26F6403-4C6C-8985-DFA2-4C39878E392A}|WITH_pattern\\WITH_pattern.csproj|solutionrelative:with_pattern\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A26F6403-4C6C-8985-DFA2-4C39878E392A}|WITH_pattern\\WITH_pattern.csproj|d:\\ooap\\object-oriented-analysis-and-design-2\\lab01\\with_pattern\\with_pattern\\ipizzabuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A26F6403-4C6C-8985-DFA2-4C39878E392A}|WITH_pattern\\WITH_pattern.csproj|solutionrelative:with_pattern\\ipizzabuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A26F6403-4C6C-8985-DFA2-4C39878E392A}|WITH_pattern\\WITH_pattern.csproj|d:\\ooap\\object-oriented-analysis-and-design-2\\lab01\\with_pattern\\with_pattern\\pizzamenuitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A26F6403-4C6C-8985-DFA2-4C39878E392A}|WITH_pattern\\WITH_pattern.csproj|solutionrelative:with_pattern\\pizzamenuitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A26F6403-4C6C-8985-DFA2-4C39878E392A}|WITH_pattern\\WITH_pattern.csproj|d:\\ooap\\object-oriented-analysis-and-design-2\\lab01\\with_pattern\\with_pattern\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{A26F6403-4C6C-8985-DFA2-4C39878E392A}|WITH_pattern\\WITH_pattern.csproj|solutionrelative:with_pattern\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A26F6403-4C6C-8985-DFA2-4C39878E392A}|WITH_pattern\\WITH_pattern.csproj|d:\\ooap\\object-oriented-analysis-and-design-2\\lab01\\with_pattern\\with_pattern\\toppingcatalog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A26F6403-4C6C-8985-DFA2-4C39878E392A}|WITH_pattern\\WITH_pattern.csproj|solutionrelative:with_pattern\\toppingcatalog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A26F6403-4C6C-8985-DFA2-4C39878E392A}|WITH_pattern\\WITH_pattern.csproj|d:\\ooap\\object-oriented-analysis-and-design-2\\lab01\\with_pattern\\with_pattern\\topping.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A26F6403-4C6C-8985-DFA2-4C39878E392A}|WITH_pattern\\WITH_pattern.csproj|solutionrelative:with_pattern\\topping.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A26F6403-4C6C-8985-DFA2-4C39878E392A}|WITH_pattern\\WITH_pattern.csproj|d:\\ooap\\object-oriented-analysis-and-design-2\\lab01\\with_pattern\\with_pattern\\sauce.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A26F6403-4C6C-8985-DFA2-4C39878E392A}|WITH_pattern\\WITH_pattern.csproj|solutionrelative:with_pattern\\sauce.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A26F6403-4C6C-8985-DFA2-4C39878E392A}|WITH_pattern\\WITH_pattern.csproj|d:\\ooap\\object-oriented-analysis-and-design-2\\lab01\\with_pattern\\with_pattern\\dough.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A26F6403-4C6C-8985-DFA2-4C39878E392A}|WITH_pattern\\WITH_pattern.csproj|solutionrelative:with_pattern\\dough.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A26F6403-4C6C-8985-DFA2-4C39878E392A}|WITH_pattern\\WITH_pattern.csproj|d:\\ooap\\object-oriented-analysis-and-design-2\\lab01\\with_pattern\\with_pattern\\pizza.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A26F6403-4C6C-8985-DFA2-4C39878E392A}|WITH_pattern\\WITH_pattern.csproj|solutionrelative:with_pattern\\pizza.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A26F6403-4C6C-8985-DFA2-4C39878E392A}|WITH_pattern\\WITH_pattern.csproj|d:\\ooap\\object-oriented-analysis-and-design-2\\lab01\\with_pattern\\with_pattern\\orderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A26F6403-4C6C-8985-DFA2-4C39878E392A}|WITH_pattern\\WITH_pattern.csproj|solutionrelative:with_pattern\\orderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{A26F6403-4C6C-8985-DFA2-4C39878E392A}|WITH_pattern\\WITH_pattern.csproj|d:\\ooap\\object-oriented-analysis-and-design-2\\lab01\\with_pattern\\with_pattern\\pizzamenuitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A26F6403-4C6C-8985-DFA2-4C39878E392A}|WITH_pattern\\WITH_pattern.csproj|solutionrelative:with_pattern\\pizzamenuitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A26F6403-4C6C-8985-DFA2-4C39878E392A}|WITH_pattern\\WITH_pattern.csproj|d:\\ooap\\object-oriented-analysis-and-design-2\\lab01\\with_pattern\\with_pattern\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A26F6403-4C6C-8985-DFA2-4C39878E392A}|WITH_pattern\\WITH_pattern.csproj|solutionrelative:with_pattern\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A26F6403-4C6C-8985-DFA2-4C39878E392A}|WITH_pattern\\WITH_pattern.csproj|d:\\ooap\\object-oriented-analysis-and-design-2\\lab01\\with_pattern\\with_pattern\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{A26F6403-4C6C-8985-DFA2-4C39878E392A}|WITH_pattern\\WITH_pattern.csproj|solutionrelative:with_pattern\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A26F6403-4C6C-8985-DFA2-4C39878E392A}|WITH_pattern\\WITH_pattern.csproj|d:\\ooap\\object-oriented-analysis-and-design-2\\lab01\\with_pattern\\with_pattern\\pizzabuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A26F6403-4C6C-8985-DFA2-4C39878E392A}|WITH_pattern\\WITH_pattern.csproj|solutionrelative:with_pattern\\pizzabuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A26F6403-4C6C-8985-DFA2-4C39878E392A}|WITH_pattern\\WITH_pattern.csproj|d:\\ooap\\object-oriented-analysis-and-design-2\\lab01\\with_pattern\\with_pattern\\ipizzabuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A26F6403-4C6C-8985-DFA2-4C39878E392A}|WITH_pattern\\WITH_pattern.csproj|solutionrelative:with_pattern\\ipizzabuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A26F6403-4C6C-8985-DFA2-4C39878E392A}|WITH_pattern\\WITH_pattern.csproj|d:\\ooap\\object-oriented-analysis-and-design-2\\lab01\\with_pattern\\with_pattern\\pizzadirector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A26F6403-4C6C-8985-DFA2-4C39878E392A}|WITH_pattern\\WITH_pattern.csproj|solutionrelative:with_pattern\\pizzadirector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A26F6403-4C6C-8985-DFA2-4C39878E392A}|WITH_pattern\\WITH_pattern.csproj|d:\\ooap\\object-oriented-analysis-and-design-2\\lab01\\with_pattern\\with_pattern\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A26F6403-4C6C-8985-DFA2-4C39878E392A}|WITH_pattern\\WITH_pattern.csproj|solutionrelative:with_pattern\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A26F6403-4C6C-8985-DFA2-4C39878E392A}|WITH_pattern\\WITH_pattern.csproj|d:\\ooap\\object-oriented-analysis-and-design-2\\lab01\\with_pattern\\with_pattern\\pizza.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A26F6403-4C6C-8985-DFA2-4C39878E392A}|WITH_pattern\\WITH_pattern.csproj|solutionrelative:with_pattern\\pizza.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A26F6403-4C6C-8985-DFA2-4C39878E392A}|WITH_pattern\\WITH_pattern.csproj|d:\\ooap\\object-oriented-analysis-and-design-2\\lab01\\with_pattern\\with_pattern\\ingredient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A26F6403-4C6C-8985-DFA2-4C39878E392A}|WITH_pattern\\WITH_pattern.csproj|solutionrelative:with_pattern\\ingredient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A26F6403-4C6C-8985-DFA2-4C39878E392A}|WITH_pattern\\WITH_pattern.csproj|d:\\ooap\\object-oriented-analysis-and-design-2\\lab01\\with_pattern\\with_pattern\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A26F6403-4C6C-8985-DFA2-4C39878E392A}|WITH_pattern\\WITH_pattern.csproj|solutionrelative:with_pattern\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A26F6403-4C6C-8985-DFA2-4C39878E392A}|WITH_pattern\\WITH_pattern.csproj|d:\\ooap\\object-oriented-analysis-and-design-2\\lab01\\with_pattern\\with_pattern\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{A26F6403-4C6C-8985-DFA2-4C39878E392A}|WITH_pattern\\WITH_pattern.csproj|solutionrelative:with_pattern\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -80,189 +76,177 @@
               "RelativeDocumentMoniker": "WITH_pattern\\Form1.cs",
               "ToolTip": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\WITH_pattern\\WITH_pattern\\Form1.cs",
               "RelativeToolTip": "WITH_pattern\\Form1.cs",
-              "ViewState": "AgIAAB8BAAAAAAAAAAAkwCwBAAA3AAAAAAAAAA==",
+              "ViewState": "AgIAAEYBAAAAAAAAAAAYwFgBAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-26T18:02:55.791Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "PizzaMenuItem.cs",
-              "DocumentMoniker": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\WITH_pattern\\WITH_pattern\\PizzaMenuItem.cs",
-              "RelativeDocumentMoniker": "WITH_pattern\\PizzaMenuItem.cs",
-              "ToolTip": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\WITH_pattern\\WITH_pattern\\PizzaMenuItem.cs",
-              "RelativeToolTip": "WITH_pattern\\PizzaMenuItem.cs",
-              "ViewState": "AgIAAH4AAAAAAAAAAAAawIoAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-26T18:02:43.329Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "PizzaDirector.cs",
-              "DocumentMoniker": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\WITH_pattern\\WITH_pattern\\PizzaDirector.cs",
-              "RelativeDocumentMoniker": "WITH_pattern\\PizzaDirector.cs",
-              "ToolTip": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\WITH_pattern\\WITH_pattern\\PizzaDirector.cs",
-              "RelativeToolTip": "WITH_pattern\\PizzaDirector.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-26T18:01:58.055Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "IPizzaBuilder.cs",
-              "DocumentMoniker": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\WITH_pattern\\WITH_pattern\\IPizzaBuilder.cs",
-              "RelativeDocumentMoniker": "WITH_pattern\\IPizzaBuilder.cs",
-              "ToolTip": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\WITH_pattern\\WITH_pattern\\IPizzaBuilder.cs",
-              "RelativeToolTip": "WITH_pattern\\IPizzaBuilder.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAkwB0AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-26T18:01:16.11Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Order.cs",
-              "DocumentMoniker": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\WITH_pattern\\WITH_pattern\\Order.cs",
-              "RelativeDocumentMoniker": "WITH_pattern\\Order.cs",
-              "ToolTip": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\WITH_pattern\\WITH_pattern\\Order.cs",
-              "RelativeToolTip": "WITH_pattern\\Order.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAYwDcAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-26T18:05:29.489Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "PizzaBuilder.cs",
-              "DocumentMoniker": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\WITH_pattern\\WITH_pattern\\PizzaBuilder.cs",
-              "RelativeDocumentMoniker": "WITH_pattern\\PizzaBuilder.cs",
-              "ToolTip": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\WITH_pattern\\WITH_pattern\\PizzaBuilder.cs",
-              "RelativeToolTip": "WITH_pattern\\PizzaBuilder.cs",
-              "ViewState": "AgIAAMIAAAAAAAAAAAAkwN8AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-26T18:01:35.276Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\WITH_pattern\\WITH_pattern\\Program.cs",
-              "RelativeDocumentMoniker": "WITH_pattern\\Program.cs",
-              "ToolTip": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\WITH_pattern\\WITH_pattern\\Program.cs",
-              "RelativeToolTip": "WITH_pattern\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-26T18:40:52.282Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Topping.cs",
-              "DocumentMoniker": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\WITH_pattern\\WITH_pattern\\Topping.cs",
-              "RelativeDocumentMoniker": "WITH_pattern\\Topping.cs",
-              "ToolTip": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\WITH_pattern\\WITH_pattern\\Topping.cs",
-              "RelativeToolTip": "WITH_pattern\\Topping.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-26T17:59:30.038Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Sauce.cs",
-              "DocumentMoniker": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\WITH_pattern\\WITH_pattern\\Sauce.cs",
-              "RelativeDocumentMoniker": "WITH_pattern\\Sauce.cs",
-              "ToolTip": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\WITH_pattern\\WITH_pattern\\Sauce.cs",
-              "RelativeToolTip": "WITH_pattern\\Sauce.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-26T18:00:25.633Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Dough.cs",
-              "DocumentMoniker": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\WITH_pattern\\WITH_pattern\\Dough.cs",
-              "RelativeDocumentMoniker": "WITH_pattern\\Dough.cs",
-              "ToolTip": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\WITH_pattern\\WITH_pattern\\Dough.cs",
-              "RelativeToolTip": "WITH_pattern\\Dough.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-26T17:59:58.084Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Pizza.cs",
-              "DocumentMoniker": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\WITH_pattern\\WITH_pattern\\Pizza.cs",
-              "RelativeDocumentMoniker": "WITH_pattern\\Pizza.cs",
-              "ToolTip": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\WITH_pattern\\WITH_pattern\\Pizza.cs",
-              "RelativeToolTip": "WITH_pattern\\Pizza.cs",
-              "ViewState": "AgIAAGgAAAAAAAAAAAAkwIUAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-26T18:00:41.862Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "DocumentMoniker": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\WITH_pattern\\WITH_pattern\\Form1.cs",
-              "RelativeDocumentMoniker": "WITH_pattern\\Form1.cs",
-              "ToolTip": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\WITH_pattern\\WITH_pattern\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "RelativeToolTip": "WITH_pattern\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-26T20:46:51.321Z",
-              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
               "Title": "ToppingCatalog.cs",
               "DocumentMoniker": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\WITH_pattern\\WITH_pattern\\ToppingCatalog.cs",
               "RelativeDocumentMoniker": "WITH_pattern\\ToppingCatalog.cs",
               "ToolTip": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\WITH_pattern\\WITH_pattern\\ToppingCatalog.cs",
               "RelativeToolTip": "WITH_pattern\\ToppingCatalog.cs",
-              "ViewState": "AgIAADYAAAAAAAAAAAAkwEEAAAAoAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-26T18:02:20.481Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 2,
               "Title": "OrderItem.cs",
               "DocumentMoniker": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\WITH_pattern\\WITH_pattern\\OrderItem.cs",
               "RelativeDocumentMoniker": "WITH_pattern\\OrderItem.cs",
               "ToolTip": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\WITH_pattern\\WITH_pattern\\OrderItem.cs",
               "RelativeToolTip": "WITH_pattern\\OrderItem.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAACEAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAuwBwAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-26T18:05:49.577Z"
+              "WhenOpened": "2026-02-26T18:05:49.577Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 3,
+              "Title": "PizzaMenuItem.cs",
+              "DocumentMoniker": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\WITH_pattern\\WITH_pattern\\PizzaMenuItem.cs",
+              "RelativeDocumentMoniker": "WITH_pattern\\PizzaMenuItem.cs",
+              "ToolTip": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\WITH_pattern\\WITH_pattern\\PizzaMenuItem.cs",
+              "RelativeToolTip": "WITH_pattern\\PizzaMenuItem.cs",
+              "ViewState": "AgIAADgAAAAAAAAAAAAuwFIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-26T18:02:43.329Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "Form2.cs",
               "DocumentMoniker": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\WITH_pattern\\WITH_pattern\\Form2.cs",
               "RelativeDocumentMoniker": "WITH_pattern\\Form2.cs",
               "ToolTip": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\WITH_pattern\\WITH_pattern\\Form2.cs",
               "RelativeToolTip": "WITH_pattern\\Form2.cs",
-              "ViewState": "AgIAAEEAAAAAAAAAAAAIwF8AAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAiwAgAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-26T18:05:00.642Z"
+              "WhenOpened": "2026-02-26T18:05:00.642Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentMoniker": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\WITH_pattern\\WITH_pattern\\Form1.cs",
+              "RelativeDocumentMoniker": "WITH_pattern\\Form1.cs",
+              "ToolTip": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\WITH_pattern\\WITH_pattern\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "WITH_pattern\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-01T11:49:01.861Z",
+              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "PizzaBuilder.cs",
+              "DocumentMoniker": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\WITH_pattern\\WITH_pattern\\PizzaBuilder.cs",
+              "RelativeDocumentMoniker": "WITH_pattern\\PizzaBuilder.cs",
+              "ToolTip": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\WITH_pattern\\WITH_pattern\\PizzaBuilder.cs",
+              "RelativeToolTip": "WITH_pattern\\PizzaBuilder.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAuwDkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-26T18:01:35.276Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "IPizzaBuilder.cs",
+              "DocumentMoniker": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\WITH_pattern\\WITH_pattern\\IPizzaBuilder.cs",
+              "RelativeDocumentMoniker": "WITH_pattern\\IPizzaBuilder.cs",
+              "ToolTip": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\WITH_pattern\\WITH_pattern\\IPizzaBuilder.cs",
+              "RelativeToolTip": "WITH_pattern\\IPizzaBuilder.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-26T18:01:16.11Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "PizzaDirector.cs",
+              "DocumentMoniker": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\WITH_pattern\\WITH_pattern\\PizzaDirector.cs",
+              "RelativeDocumentMoniker": "WITH_pattern\\PizzaDirector.cs",
+              "ToolTip": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\WITH_pattern\\WITH_pattern\\PizzaDirector.cs",
+              "RelativeToolTip": "WITH_pattern\\PizzaDirector.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAgwAsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-26T18:01:58.055Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Order.cs",
+              "DocumentMoniker": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\WITH_pattern\\WITH_pattern\\Order.cs",
+              "RelativeDocumentMoniker": "WITH_pattern\\Order.cs",
+              "ToolTip": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\WITH_pattern\\WITH_pattern\\Order.cs",
+              "RelativeToolTip": "WITH_pattern\\Order.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvxEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-26T18:05:29.489Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Pizza.cs",
+              "DocumentMoniker": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\WITH_pattern\\WITH_pattern\\Pizza.cs",
+              "RelativeDocumentMoniker": "WITH_pattern\\Pizza.cs",
+              "ToolTip": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\WITH_pattern\\WITH_pattern\\Pizza.cs",
+              "RelativeToolTip": "WITH_pattern\\Pizza.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAA/wCMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-26T18:00:41.862Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Ingredient.cs",
+              "DocumentMoniker": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\WITH_pattern\\WITH_pattern\\Ingredient.cs",
+              "RelativeDocumentMoniker": "WITH_pattern\\Ingredient.cs",
+              "ToolTip": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\WITH_pattern\\WITH_pattern\\Ingredient.cs",
+              "RelativeToolTip": "WITH_pattern\\Ingredient.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-01T11:18:19.512Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\WITH_pattern\\WITH_pattern\\Program.cs",
+              "RelativeDocumentMoniker": "WITH_pattern\\Program.cs",
+              "ToolTip": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\WITH_pattern\\WITH_pattern\\Program.cs",
+              "RelativeToolTip": "WITH_pattern\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-26T18:40:52.282Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Form2.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentMoniker": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\WITH_pattern\\WITH_pattern\\Form2.cs",
+              "RelativeDocumentMoniker": "WITH_pattern\\Form2.cs",
+              "ToolTip": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\WITH_pattern\\WITH_pattern\\Form2.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "WITH_pattern\\Form2.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-01T10:22:25.661Z",
+              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
             }
           ]
         }

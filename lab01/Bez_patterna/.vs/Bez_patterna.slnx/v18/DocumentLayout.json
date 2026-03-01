@@ -36,7 +36,7 @@
               "RelativeDocumentMoniker": "Bez_patterna\\Form1.cs",
               "ToolTip": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\Bez_patterna\\Bez_patterna\\Form1.cs",
               "RelativeToolTip": "Bez_patterna\\Form1.cs",
-              "ViewState": "AgIAAPkAAAAAAAAAAAAAAAMBAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAwBAAAAAAAAAAAwwB8BAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-25T15:09:26.234Z",
               "EditorCaption": ""
@@ -51,7 +51,8 @@
               "RelativeToolTip": "Bez_patterna\\Pizza.cs",
               "ViewState": "AgIAADAAAAAAAAAAAAAYwCEAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-25T15:07:27.977Z"
+              "WhenOpened": "2026-02-25T15:07:27.977Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -61,7 +62,7 @@
               "RelativeDocumentMoniker": "Bez_patterna\\Form2.cs",
               "ToolTip": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\Bez_patterna\\Bez_patterna\\Form2.cs",
               "RelativeToolTip": "Bez_patterna\\Form2.cs",
-              "ViewState": "AgIAAEUAAAAAAAAAAAA/wE8AAAA/AAAAAAAAAA==",
+              "ViewState": "AgIAAEYAAAAAAAAAAAAswE8AAAA/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-25T15:10:09.656Z",
               "EditorCaption": ""
@@ -76,7 +77,8 @@
               "RelativeToolTip": "Bez_patterna\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-25T15:07:05.889Z"
+              "WhenOpened": "2026-02-25T15:07:05.889Z",
+              "EditorCaption": ""
             }
           ]
         }

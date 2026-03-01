@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace WITH_pattern
 {
@@ -7,28 +6,24 @@ namespace WITH_pattern
     {
         public Pizza Pizza { get; set; }
         public int Quantity { get; set; }
+        public Label lblQuantity { get; set; } // Для обратной связи с UI
         public Panel Panel { get; set; }
-        public Label lblQuantity { get; set; }
 
-        public OrderItem(Pizza pizza, int quantity)
+        public OrderItem(Pizza pizza)
         {
-            Pizza = pizza;
-            Quantity = quantity;
-            Panel = new Panel();
-            lblQuantity = new Label();
+            this.Pizza = pizza;
+            this.Quantity = 1;
         }
 
-        public int GetTotalPrice()
+        public int CalculateTotal()
         {
-            return Pizza.GetTotalPrice() * Quantity;
+            return Pizza.CalculateTotal() * Quantity;
         }
 
         public void UpdateQuantityDisplay()
         {
             if (lblQuantity != null)
-            {
-                lblQuantity.Text = $"{Quantity}";
-            }
+                lblQuantity.Text = Quantity.ToString();
         }
     }
 }
