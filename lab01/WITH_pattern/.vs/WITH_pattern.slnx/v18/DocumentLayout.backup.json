@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\WITH_pattern\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A26F6403-4C6C-8985-DFA2-4C39878E392A}|WITH_pattern\\WITH_pattern.csproj|d:\\ooap\\object-oriented-analysis-and-design-2\\lab01\\with_pattern\\with_pattern\\pizza.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A26F6403-4C6C-8985-DFA2-4C39878E392A}|WITH_pattern\\WITH_pattern.csproj|solutionrelative:with_pattern\\pizza.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A26F6403-4C6C-8985-DFA2-4C39878E392A}|WITH_pattern\\WITH_pattern.csproj|d:\\ooap\\object-oriented-analysis-and-design-2\\lab01\\with_pattern\\with_pattern\\pizzadirector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A26F6403-4C6C-8985-DFA2-4C39878E392A}|WITH_pattern\\WITH_pattern.csproj|solutionrelative:with_pattern\\pizzadirector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -19,12 +23,25 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Pizza.cs",
+              "DocumentMoniker": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\WITH_pattern\\WITH_pattern\\Pizza.cs",
+              "RelativeDocumentMoniker": "WITH_pattern\\Pizza.cs",
+              "ToolTip": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\WITH_pattern\\WITH_pattern\\Pizza.cs",
+              "RelativeToolTip": "WITH_pattern\\Pizza.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-03T15:58:15.548Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "PizzaDirector.cs",
               "DocumentMoniker": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\WITH_pattern\\WITH_pattern\\PizzaDirector.cs",
               "RelativeDocumentMoniker": "WITH_pattern\\PizzaDirector.cs",
               "ToolTip": "D:\\ooap\\Object-oriented-analysis-and-design-2\\lab01\\WITH_pattern\\WITH_pattern\\PizzaDirector.cs",
               "RelativeToolTip": "WITH_pattern\\PizzaDirector.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-03T15:42:25.195Z",
               "EditorCaption": ""
