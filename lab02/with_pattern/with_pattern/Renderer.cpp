@@ -213,13 +213,13 @@ void Renderer::drawCol2(float x, float y, float w, float h) {
 
     item(16.f, [&](float iy) { drawTxt("── ЮНИТЫ ─────────────────────────────", 10, C::GREEN_DIM, px, iy); });
     struct UI { const char* name; int cost; float pow; const char* type; };
-    UI units[] = { {"Пехотинец",5,5.f,"INFANTRY"},{"Танк",25,0.f,"VEHICLE"},{"Артиллерия",15,0.f,"VEHICLE"} };
+    UI units[] = { {"Пехотинец",5,5.f,"INFANTRY"},{"Танк",25,25.f,"VEHICLE"},{"Артиллерия",15,25.f,"VEHICLE"} };
     for (auto& u : units) {
         item(42.f, [&](float iy) {
             rect(px, iy, w - 34.f, 40.f, C::BG_CARD, C::BORDER);
             drawTxt(u.name, 12, C::TEXT, px + 8.f, iy + 5.f);
             drawTxt(std::to_string(u.cost) + " ОЧК", 10, C::AMBER, px + w - 80.f, iy + 7.f);
-            std::string pw = u.pow > 0 ? ("мощь: " + std::to_string((int)u.pow)) : "мощь: 0 (бонус в отделении)";
+            std::string pw = u.pow > 0 ? ("мощь: " + std::to_string((int)u.pow)) : "мощь: 15 (бонус в отделении)";
             drawTxt(pw, 9, C::TEXT_DIM, px + 8.f, iy + 24.f);
             });
     }
@@ -576,109 +576,270 @@ void Renderer::handleMouseClick(sf::Vector2f pos) {
 
     // Кнопка В МЕНЮ
     if (pos.x >= W - 100.f && pos.y >= 10.f && pos.y <= 40.f) {
-        wantsMenu = true; popup.visible = false; addDrop.visible = false; return;
+        wantsMenu = true;
+        popup.visible = false;
+        addDrop.visible = false;
+        return;
     }
 
-    // ── Дропдаун ──
+    if (state.phase == GamePhase::RESULT) {
+        return;
+    }
+
+    // Дропдаун всегда на самом верхнем слое
     if (addDrop.visible) {
-        float dw = 360.f, px = std::min(addDrop.x, W - dw - 6.f), py = addDrop.y;
-        if (py + 400.f > H) py = H - 400.f;
+        float dw = 360.f, dpx = std::min(addDrop.x, W - dw - 6.f), dpy = addDrop.y;
+        if (dpy + 400.f > H) dpy = H - 400.f;
 
         if (addDrop.mode == 1 && addDrop.targetFormation) {
-            float iy = py + 28.f;
-            if (pos.x >= px + 6.f && pos.x <= px + dw - 6.f) {
-                // Пехотинец
+            float iy = dpy + 28.f;
+            if (pos.x >= dpx + 6.f && pos.x <= dpx + dw - 6.f) {
                 if (pos.y >= iy && pos.y <= iy + 32.f) {
                     if (state.remaining() >= 5) {
                         Unit* nu = state.createUnit(UnitFactory::makeRifleman());
                         state.addUnitToFormation(addDrop.targetFormation, nu);
                     }
-                    addDrop.visible = false; addDrop.targetFormation = nullptr; return;
+                    addDrop.visible = false;
+                    addDrop.targetFormation = nullptr;
+                    return;
                 }
                 iy += 36.f;
-                // Танк
                 if (pos.y >= iy && pos.y <= iy + 32.f) {
                     if (state.remaining() >= 25) {
                         Unit* nu = state.createUnit(UnitFactory::makeTank());
                         state.addUnitToFormation(addDrop.targetFormation, nu);
                     }
-                    addDrop.visible = false; addDrop.targetFormation = nullptr; return;
+                    addDrop.visible = false;
+                    addDrop.targetFormation = nullptr;
+                    return;
                 }
                 iy += 36.f;
-                // Артиллерия
                 if (pos.y >= iy && pos.y <= iy + 32.f) {
                     if (state.remaining() >= 15) {
                         Unit* nu = state.createUnit(UnitFactory::makeArtillery());
                         state.addUnitToFormation(addDrop.targetFormation, nu);
                     }
-                    addDrop.visible = false; addDrop.targetFormation = nullptr; return;
+                    addDrop.visible = false;
+                    addDrop.targetFormation = nullptr;
+                    return;
                 }
             }
-            addDrop.visible = false; addDrop.targetFormation = nullptr; return;
+            addDrop.visible = false;
+            addDrop.targetFormation = nullptr;
+            return;
         }
 
-        // mode==0: добавить на рубеж
-        float iy = py + 28.f + 18.f;
-        int ucosts[] = { 5,25,15 };
-        // Пехотинец
-        if (pos.x >= px + 6.f && pos.x <= px + dw - 6.f && pos.y >= iy && pos.y <= iy + 20.f) {
-            if (state.remaining() >= ucosts[0]) {
-                Unit* u = state.createUnit(UnitFactory::makeRifleman());
-                state.spent += u->cost;
-                state.assignToDirection(u, addDrop.dirIdx);
-            }
-            addDrop.visible = false; return;
-        }
-        iy += 22.f;
-        // Танк
-        if (pos.x >= px + 6.f && pos.x <= px + dw - 6.f && pos.y >= iy && pos.y <= iy + 20.f) {
-            if (state.remaining() >= ucosts[1]) {
-                Unit* u = state.createUnit(UnitFactory::makeTank());
-                state.spent += u->cost;
-                state.assignToDirection(u, addDrop.dirIdx);
-            }
-            addDrop.visible = false; return;
-        }
-        iy += 22.f;
-        // Артиллерия
-        if (pos.x >= px + 6.f && pos.x <= px + dw - 6.f && pos.y >= iy && pos.y <= iy + 20.f) {
-            if (state.remaining() >= ucosts[2]) {
-                Unit* u = state.createUnit(UnitFactory::makeArtillery());
-                state.spent += u->cost;
-                state.assignToDirection(u, addDrop.dirIdx);
-            }
-            addDrop.visible = false; return;
-        }
-        iy += 22.f + 4.f;
-        // Отделения (3 блока)
+        float iy = dpy + 28.f + 18.f;
+        int ucosts[] = { 5, 25, 15 };
         for (int i = 0; i < 3; i++) {
-            if (pos.x >= px + 6.f && pos.x <= px + dw - 6.f && pos.y >= iy && pos.y <= iy + 44.f) {
+            if (pos.x >= dpx + 6.f && pos.x <= dpx + dw - 6.f && pos.y >= iy && pos.y <= iy + 20.f) {
+                if (state.remaining() >= ucosts[i]) {
+                    Unit* u = nullptr;
+                    if (i == 0) u = state.createUnit(UnitFactory::makeRifleman());
+                    else if (i == 1) u = state.createUnit(UnitFactory::makeTank());
+                    else u = state.createUnit(UnitFactory::makeArtillery());
+                    if (u) {
+                        state.spent += u->cost;
+                        state.assignToDirection(u, addDrop.dirIdx);
+                    }
+                }
+                addDrop.visible = false;
+                return;
+            }
+            iy += 22.f;
+        }
+        iy += 4.f;
+
+        for (int i = 0; i < 3; i++) {
+            if (pos.x >= dpx + 6.f && pos.x <= dpx + dw - 6.f && pos.y >= iy && pos.y <= iy + 44.f) {
                 Formation* f = nullptr;
                 if (i == 0) f = state.createFormation(Formation::makeInfantrySquad());
                 else if (i == 1) f = state.createFormation(Formation::makeTankSquad());
                 else if (i == 2) f = state.createFormation(Formation::makeArtillerySquad());
                 if (f) state.assignToDirection(f, addDrop.dirIdx);
-                addDrop.visible = false; return;
+                addDrop.visible = false;
+                return;
             }
             iy += 52.f;
         }
         iy += 4.f;
-        // Взвод (зона внизу)
-        if (pos.x >= px + 6.f && pos.x <= px + dw - 6.f && pos.y >= iy && pos.y <= iy + 48.f) {
+
+        if (pos.x >= dpx + 6.f && pos.x <= dpx + dw - 6.f && pos.y >= iy && pos.y <= iy + 48.f) {
 #ifdef HAS_MAKE_PLATOON
             Formation* pl = state.createFormation(Formation::makePlatoon());
             if (pl) state.assignToDirection(pl, addDrop.dirIdx);
 #endif
-            addDrop.visible = false; return;
+            addDrop.visible = false;
+            return;
         }
 
-        addDrop.visible = false; return;
+        addDrop.visible = false;
+        return;
     }
 
-    // Если кликнули по узлу на карте — открыть попап
+    // Обработка кликов внутри попапа
+    if (popup.visible) {
+        const auto& d = state.currentMission->directions[popup.dirIdx];
+        popup.sync((int)d.units.size());
+
+        float pw = POPUP_W, ph = calcPopupH();
+        float px = std::min(popup.x, W - pw - 6.f);
+        float py = std::min(popup.y, TOP_H + MAP_H - ph - 4.f);
+        if (py < TOP_H + 4.f) py = TOP_H + 4.f;
+        if (px < 4.f) px = 4.f;
+
+        bool insidePopup = (pos.x >= px && pos.x <= px + pw && pos.y >= py && pos.y <= py + ph);
+
+        // Кнопка [X] правый верхний угол
+        if (pos.x >= px + pw - 38.f && pos.x <= px + pw - 8.f &&
+            pos.y >= py + 8.f && pos.y <= py + 30.f) {
+            popup.visible = false;
+            return;
+        }
+
+        float cy = py + 52.f + 36.f + 14.f;
+
+        for (int i = 0; i < (int)d.units.size(); i++) {
+            IMilitaryUnit* u = d.units[i];
+            bool exp = popup.expanded[i];
+
+            // Кнопка УБРАТЬ
+            if (pos.x >= px + pw - 50.f && pos.x <= px + pw - 8.f &&
+                pos.y >= cy + 5.f && pos.y <= cy + 27.f) {
+                // TODO: добавь логику удаления когда будешь готов
+                return;
+            }
+
+            // Свернуть / развернуть
+            if (pos.x >= px + 4.f && pos.x <= px + pw - 50.f &&
+                pos.y >= cy && pos.y <= cy + 32.f) {
+                popup.expanded[i] = !popup.expanded[i];
+                return;
+            }
+
+            cy += 36.f;
+
+            if (exp && u->isComposite()) {
+                auto children = u->getChildren();
+                for (int ci = 0; ci < (int)children.size(); ci++) {
+                    IMilitaryUnit* ch = children[ci];
+                    bool cexp = popup.childExpanded[i][ci];
+
+                    // Кнопка УБР
+                    if (pos.x >= px + pw - 44.f && pos.x <= px + pw - 8.f &&
+                        pos.y >= cy + 4.f && pos.y <= cy + 22.f) {
+                        // TODO: добавь логику удаления когда будешь готов
+                        return;
+                    }
+
+                    // Свернуть развернуть дочерний
+                    if (pos.x >= px + 14.f && pos.x <= px + pw - 44.f &&
+                        pos.y >= cy && pos.y <= cy + 28.f) {
+                        popup.childExpanded[i][ci] = !popup.childExpanded[i][ci];
+                        return;
+                    }
+
+                    cy += 30.f;
+
+                    if (cexp && ch->isComposite()) {
+                        auto grandChildren = ch->getChildren();
+                        for (int gi = 0; gi < (int)grandChildren.size(); gi++) {
+                            // Кнопка X
+                            if (pos.x >= px + pw - 36.f && pos.x <= px + pw - 8.f &&
+                                pos.y >= cy + 1.f && pos.y <= cy + 19.f) {
+                                // TODO: добавь логику удаления когда будешь готов
+                                return;
+                            }
+                            cy += 24.f;
+                        }
+
+                        // Кнопка + добавить юнита
+                        if (pos.x >= px + 24.f && pos.x <= px + pw - 6.f &&
+                            pos.y >= cy && pos.y <= cy + 22.f) {
+                            addDrop.visible = true;
+                            addDrop.mode = 1;
+                            addDrop.targetFormation = dynamic_cast<Formation*>(ch);
+                            addDrop.x = pos.x;
+                            addDrop.y = pos.y;
+                            addDrop.dirIdx = popup.dirIdx;
+                            return;
+                        }
+                        cy += 26.f;
+                    }
+                    cy += 4.f;
+                }
+
+                // Кнопка + добавить в Formation
+                if (pos.x >= px + 12.f && pos.x <= px + pw - 6.f &&
+                    pos.y >= cy && pos.y <= cy + 24.f) {
+                    addDrop.visible = true;
+                    addDrop.mode = 1;
+                    addDrop.targetFormation = dynamic_cast<Formation*>(u);
+                    addDrop.x = pos.x;
+                    addDrop.y = pos.y;
+                    addDrop.dirIdx = popup.dirIdx;
+                    return;
+                }
+                cy += 28.f;
+            }
+            cy += 4.f;
+        }
+
+        // Кнопка + добавить на рубеж
+        if (pos.x >= px + 4.f && pos.x <= px + pw - 4.f &&
+            pos.y >= cy && pos.y <= cy + 28.f) {
+            addDrop.visible = true;
+            addDrop.mode = 0;
+            addDrop.targetFormation = nullptr;
+            addDrop.x = pos.x;
+            addDrop.y = pos.y;
+            addDrop.dirIdx = popup.dirIdx;
+            return;
+        }
+        cy += 32.f;
+
+        // Кнопка [ ЗАКРЫТЬ ] внизу
+        if (pos.x >= px + 4.f && pos.x <= px + pw - 4.f &&
+            pos.y >= cy + 6.f && pos.y <= cy + 30.f) {
+            popup.visible = false;
+            return;
+        }
+
+        // Клик внутри попапа мимо кнопок - поглощаем
+        if (insidePopup) {
+            return;
+        }
+
+        // Клик снаружи - закрываем попап
+        popup.visible = false;
+        return;
+    }
+
+
+    // Сюда доходим только если ничего не открыто
+    // Кнопка ВЫПОЛНИТЬ ПРИКАЗ
+    {
+        float col3x = COL1_W + COL2_W;
+        float bx = col3x + 18.f;
+        float by = PAN_Y + 12.f + 20.f + 18.f + 34.f;
+
+        // Проверяем нажатие на кнопку
+        if (pos.x >= bx && pos.y >= by && pos.x <= bx + 300.f && pos.y <= by + 48.f) {
+            // Переключаем фазу игры в результат
+            state.phase = GamePhase::RESULT;
+
+            // Если у тебя есть метод для вычисления результатов, вызови его здесь, например:
+            // state.calculateResults(); 
+
+            return;
+        }
+    }
+
+    // Клик по узлу карты чтобы открыть попап
     for (int i = 0; i < (int)nodes.size(); i++) {
         if (nodeHit(i, pos)) {
-            popup.openFor(nodes[i].dirIdx, pos.x, pos.y, (int)state.currentMission->directions[nodes[i].dirIdx].units.size());
+            popup.openFor(nodes[i].dirIdx, pos.x, pos.y,
+                (int)state.currentMission->directions[nodes[i].dirIdx].units.size());
             return;
         }
     }
