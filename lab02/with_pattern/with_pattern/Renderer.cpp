@@ -41,7 +41,7 @@ void Renderer::buildMap(Mission* mission) {
     }
     else {
         float step = W / (float)(n + 1);
-        for (int i = 0; i < n; i++) nodes.push_back({ {step * (i + 1), cy}, 44.f, i });
+        for (int i = 0; i < n; i++) nodes.push_back({ {step * (float)(i + 1), cy}, 44.f, i });
     }
 }
 
@@ -154,7 +154,10 @@ void Renderer::drawHoverTooltip(int idx) {
     if (ty < TOP_H + 4.f) ty = TOP_H + 4.f;
     rect(tx, ty, tw, th, C::BG_CARD, nodeColor(idx));
     float py = ty + 10.f;
-    auto ln = [&](const std::string& s, unsigned sz, sf::Color c) { drawTxt(s, sz, c, tx + 12.f, py); py += sz * 1.75f; };
+    auto ln = [&](const std::string& s, unsigned sz, sf::Color c) {
+        drawTxt(s, sz, c, tx + 12.f, py);
+        py += (float)sz * 1.75f; // ИСПРАВЛЕНИЕ: явное приведение для предотвращения варнинга
+        };
     ln(d.label, 13, nodeColor(idx));
     ln(d.getEnemyTypeText() + " x" + std::to_string(d.enemy_power), 11, C::AMBER);
     std::ostringstream fp; fp << std::fixed << std::setprecision(0) << d.getFriendlyPower();
@@ -264,7 +267,10 @@ void Renderer::drawLegendTooltip() {
     if (ty < TOP_H) ty = TOP_H + 4.f; if (ty + th > H - 4.f) ty = H - th - 4.f;
     rect(tx, ty, tw, th, C::BG_POPUP, C::GREEN, 1.5f); rect(tx, ty, tw, 3.f, C::GREEN, C::NONE);
     float py = ty + 10.f;
-    auto ln = [&](const std::string& s, unsigned sz, sf::Color c) { drawTxt(s, sz, c, tx + 10.f, py); py += sz * 1.7f; };
+    auto ln = [&](const std::string& s, unsigned sz, sf::Color c) {
+        drawTxt(s, sz, c, tx + 10.f, py);
+        py += (float)sz * 1.7f; // ИСПРАВЛЕНИЕ: явное приведение
+        };
     ln(inf.title, 13, C::GREEN); py += 2.f;
     ln("УСЛОВИЕ БОНУСА:", 10, C::TEXT_DIM); ln(inf.req, 11, C::AMBER); py += 2.f;
     ln("БОНУС:", 10, C::TEXT_DIM); ln(inf.power, 11, C::GREEN); py += 2.f;
@@ -709,7 +715,7 @@ void Renderer::circle(float cx, float cy, float r,
 }
 
 void Renderer::line(sf::Vector2f a, sf::Vector2f b, sf::Color col, float /*thick*/) {
-    // SFML 3: используем sf::PrimitiveType::Lines
+    // ИСПРАВЛЕНИЕ: В SFML 3 PrimitiveType нужно передавать явно
     sf::VertexArray va(sf::PrimitiveType::Lines, 2);
     va[0].position = a;
     va[0].color = col;
@@ -734,11 +740,8 @@ void Renderer::dashedLine(sf::Vector2f a, sf::Vector2f b, sf::Color col, float d
 }
 
 void Renderer::drawTxt(const std::string& s, unsigned sz, sf::Color col, float x, float y) {
-    // Надёжный способ для SFML 3.x: создать объект и задать свойства через сеттеры
-    sf::Text t;
-    t.setFont(font);
-    t.setCharacterSize(sz);
-    t.setString(toSfString(s));
+    // ИСПРАВЛЕНИЕ: Передаем шрифт, строку и размер сразу в конструктор (обход отсутствующего конструктора по умолчанию)
+    sf::Text t(font, toSfString(s), sz);
     t.setFillColor(col);
     t.setPosition(sf::Vector2f(x, y));
     win.draw(t);
@@ -789,7 +792,6 @@ sf::Color Renderer::roleColor(const std::string& role) const {
     return C::TEXT;
 }
 
-// Заглушка для рекурсивной отрисовки — при необходимости можно расширить
 float Renderer::drawUnitTree(IMilitaryUnit* unit, float px, float cy,
     float pw, int topIdx, int depth,
     std::vector<bool>& exp,

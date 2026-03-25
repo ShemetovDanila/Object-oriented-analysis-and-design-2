@@ -116,11 +116,8 @@ void Menu::drawLevelCard(const LevelInfo& lv, float x, float y, float w, float h
     rect(x, y, w, h, fillCol, bordCol, hovered ? 2.f : 1.f);
     std::string numStr = "0" + std::to_string(lv.index + 1);
 
-    // Создаём текст безопасно для SFML 3
-    sf::Text numT;
-    numT.setFont(font);
-    numT.setCharacterSize(72);
-    numT.setString(sf::String::fromUtf8(numStr.begin(), numStr.end()));
+    // ИСПРАВЛЕНИЕ: Передаем шрифт прямо в конструктор
+    sf::Text numT(font, sf::String::fromUtf8(numStr.begin(), numStr.end()), 72);
     numT.setFillColor(hovered ? sf::Color(30, 80, 30) : sf::Color(22, 45, 22));
     numT.setPosition(sf::Vector2f(x + w - 100.f, y + h * 0.5f - 44.f));
     win.draw(numT);
@@ -146,12 +143,9 @@ void Menu::handleMouseMove(sf::Vector2f pos) {
     float x = W * 0.5f + 50.f, py = 100.f + 28.f + 50.f;
     float cardH = 230.f, cardW = W * 0.5f - 100.f;
     for (int i = 0; i < (int)levels.size(); i++) {
-        // Явное создание rect — избегаем списковой инициализации
-        sf::FloatRect r;
-        r.left = x;
-        r.top = py;
-        r.width = cardW;
-        r.height = cardH;
+        // ИСПРАВЛЕНИЕ: Новый конструктор FloatRect для SFML 3 (Position, Size)
+        sf::FloatRect r(sf::Vector2f(x, py), sf::Vector2f(cardW, cardH));
+
         if (r.contains(pos)) { hoveredLevel = i; break; }
         py += cardH + 20.f;
     }
@@ -161,21 +155,17 @@ void Menu::handleMouseClick(sf::Vector2f pos) {
     float x = W * 0.5f + 50.f, py = 100.f + 28.f + 50.f;
     float cardH = 230.f, cardW = W * 0.5f - 100.f;
     for (int i = 0; i < (int)levels.size(); i++) {
-        sf::FloatRect r;
-        r.left = x;
-        r.top = py;
-        r.width = cardW;
-        r.height = cardH;
+        // ИСПРАВЛЕНИЕ: Новый конструктор FloatRect для SFML 3 (Position, Size)
+        sf::FloatRect r(sf::Vector2f(x, py), sf::Vector2f(cardW, cardH));
+
         if (r.contains(pos)) { selectedLevel = i; return; }
         py += cardH + 20.f;
     }
 }
 
 void Menu::drawTxt(const std::string& s, unsigned sz, sf::Color col, float x, float y) {
-    sf::Text t;
-    t.setFont(font);
-    t.setCharacterSize(sz);
-    t.setString(sf::String::fromUtf8(s.begin(), s.end()));
+    // ИСПРАВЛЕНИЕ: Передаем шрифт и строку в конструктор, так как в SFML 3 нет конструктора по умолчанию
+    sf::Text t(font, sf::String::fromUtf8(s.begin(), s.end()), sz);
     t.setFillColor(col);
     t.setPosition(sf::Vector2f(x, y));
     win.draw(t);
@@ -195,10 +185,9 @@ void Menu::line(sf::Vector2f a, sf::Vector2f b, sf::Color col, float thick) {
     if (len < 0.01f) return;
     sf::RectangleShape s(sf::Vector2f(len, thick));
     s.setPosition(a);
-    // setRotation принимает градусы
     constexpr float RAD2DEG = 180.f / 3.14159265358979323846f;
     float angleDeg = std::atan2(d.y, d.x) * RAD2DEG;
-    s.setRotation(angleDeg);
+    s.setRotation(sf::degrees(angleDeg)); // ИСПРАВЛЕНИЕ: В SFML 3 setRotation принимает sf::Angle, используем sf::degrees()
     s.setFillColor(col);
     win.draw(s);
 }
