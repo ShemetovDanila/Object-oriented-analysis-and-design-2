@@ -6,7 +6,7 @@ enum class UnitType { INFANTRY, VEHICLE };
 struct Unit {
     std::string name;
     int         cost;
-    int         base_power;  // пехота=5, техника=0
+    int         base_power;  // пехота=5, техника=~
     UnitType    type;
     Unit(const std::string& n, int c, int bp, UnitType t)
         : name(n), cost(c), base_power(bp), type(t) {}

@@ -6,7 +6,7 @@
 
 static sf::String U(const std::string& s){return sf::String::fromUtf8(s.begin(),s.end());}
 
-Renderer::Renderer(sf::RenderWindow& w,sf::Font& f,GameState& gs):win(w),font(f),state(gs){}
+Renderer::Renderer(sf::RenderWindow& w,sf::Font& f,GameState&  gs):win(w),font(f),state(gs){}
 
 void Renderer::buildMap(Mission* mission){
     nodes.clear(); hoveredNode=-1; popup.visible=false;

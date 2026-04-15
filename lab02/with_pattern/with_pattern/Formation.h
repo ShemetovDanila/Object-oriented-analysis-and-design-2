@@ -37,7 +37,6 @@ public:
     std::string role;
     int         max_slots;
 
-    // ── Фабрика подразделений ──
     static Formation* makeInfantrySquad();   // пех. отделение
     static Formation* makeTankSquad();       // танк. отделение
     static Formation* makeArtillerySquad();  // арт. отделение
