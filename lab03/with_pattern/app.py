@@ -13,17 +13,13 @@ from collections import deque
 from abc import ABC, abstractmethod
 from typing import Dict, List, Optional
 
-# ==========================================
-# CONFIGURATION
-# ==========================================
+# настройки
 HISTORY_SIZE = 60
 TICK_INTERVAL_MS = 1000
 LOG_PATH = "metrics.prom"
 MAX_ALERTS = 50
 
-# ==========================================
-# 1. PURE SUBJECT & INTERFACES
-# ==========================================
+# интерфейс и ядро рассылки
 class Observer(ABC):
     @abstractmethod
     def update(self, metrics: Dict[str, float], timestamp: float) -> None:
@@ -68,9 +64,7 @@ class MetricSubject:
         with self._lock:
             return self._overrides.copy()
 
-# ==========================================
-# 2. METRIC COLLECTOR
-# ==========================================
+# сбор метрик системы
 class MetricCollector:
     @staticmethod
     def collect() -> Dict[str, float]:
@@ -88,9 +82,7 @@ class MetricCollector:
             disk = 0.0
         return {"cpu": cpu, "ram": ram, "disk": disk}
 
-# ==========================================
-# 3. OBSERVER: PROMETHEUS LOGGER
-# ==========================================
+# наблюдатель: логгер в prometheus-формате
 class PrometheusLogger(Observer):
     def __init__(self, path: str, host: str = "localhost"):
         self._host = host
@@ -105,7 +97,6 @@ class PrometheusLogger(Observer):
             try:
                 ts_ms = int(timestamp * 1000)
                 for name, val in metrics.items():
-                    # FIX 1: правильный порядок — сначала value, потом timestamp_ms
                     self._file.write(f'system_{name}{{host="{self._host}"}} {val:.2f} {ts_ms}\n')
                 self._file.flush()
             except OSError as e:
@@ -115,9 +106,7 @@ class PrometheusLogger(Observer):
         if hasattr(self, "_file") and not self._file.closed:
             self._file.close()
 
-# ==========================================
-# 4. OBSERVER: ALERT RULE
-# ==========================================
+# наблюдатель: правило алертинга
 class AlertRuleObserver(Observer):
     def __init__(self, master: tk.Tk, metric: str, threshold: float, message: str, cooldown: int = 30):
         self.master = master
@@ -162,9 +151,7 @@ class AlertRuleObserver(Observer):
             self._active_popup.destroy()
         self._active_popup = None
 
-# ==========================================
-# 5. OBSERVER: DASHBOARD GUI
-# ==========================================
+# наблюдатель: графический дашборд
 class DashboardGUI(Observer):
     def __init__(self, root: tk.Tk, engine: MetricSubject):
         self.root = root
@@ -223,7 +210,6 @@ class DashboardGUI(Observer):
             self.history[key].append(val)
             x = list(range(len(self.history[key])))
             self.lines[key].set_data(x, self.history[key])
-            # FIX 2: не автомасштабируем ось Y — метрики всегда 0–100%
             self.axes[key].set_xlim(0, HISTORY_SIZE)
             self.axes[key].set_ylim(0, 100)
             self.canvases[key].draw_idle()
@@ -241,7 +227,6 @@ class DashboardGUI(Observer):
         dlg.transient(self.root)
         dlg.grab_set()
 
-        # FIX 3: tk.Label вместо ttk.Label — ttk не поддерживает fg/bg напрямую
         tk.Label(dlg, text="Threshold (%)", fg="#cdd6f4", bg="#181825",
                  font=("Segoe UI", 11)).pack(pady=(15, 0))
         thr_entry = ttk.Entry(dlg, width=10, justify="center")
@@ -275,9 +260,7 @@ class DashboardGUI(Observer):
             self.engine.unsubscribe(rule)
         self._active_alerts.clear()
 
-# ==========================================
-# 6. CONTROLLER: ADMIN PANEL
-# ==========================================
+# контроллер: админ-панель
 class AdminPanel:
     def __init__(self, engine: MetricSubject, parent: tk.Tk):
         self.win = tk.Toplevel(parent)
@@ -286,8 +269,6 @@ class AdminPanel:
         self.win.configure(bg="#181825")
         self.engine = engine
 
-        # FIX 4: не переинициализируем ttk.Style — глобальная тема уже задана
-        # в DashboardGUI; здесь только добавляем/обновляем нужные стили
         style = ttk.Style()
         style.configure("Admin.TFrame", background="#181825")
         style.configure("Admin.TLabel", background="#181825", foreground="#cdd6f4", font=("Segoe UI", 11))
@@ -337,9 +318,7 @@ class AdminPanel:
             else:
                 ctrl["var"].set(False)
 
-# ==========================================
-# 7. ORCHESTRATOR
-# ==========================================
+# оркестратор и цикл обновления
 class MonitorOrchestrator:
     def __init__(self, collector: MetricCollector = None):
         self.root = tk.Tk()
@@ -375,9 +354,7 @@ class MonitorOrchestrator:
         self.logger.close()
         self.root.destroy()
 
-# ==========================================
-# ENTRY POINT
-# ==========================================
+# точка входа
 if __name__ == "__main__":
     try:
         app = MonitorOrchestrator()
