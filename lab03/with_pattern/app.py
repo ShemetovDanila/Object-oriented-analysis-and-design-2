@@ -118,7 +118,7 @@ class PrometheusLogger(Observer):
 # ─── Алерт-правило (ИСПРАВЛЕНО) ──────────────────────────────────────────────
 class AlertRuleObserver(Observer):
     def __init__(self, master: tk.Tk, metric: str, threshold: float,
-                 message: str, cooldown: int = 30):
+                 message: str, cooldown: int = 5):
         self.master    = master
         self.metric    = metric
         self.threshold = threshold
@@ -511,7 +511,7 @@ class DashboardGUI(Observer):
                 del self.alert_meta[edit_id]
 
             # Создаём новое
-            rule = AlertRuleObserver(self.root, metric, threshold, message, cooldown=30)
+            rule = AlertRuleObserver(self.root, metric, threshold, message, cooldown=5)
             self.engine.subscribe(rule)
 
             # ✅ При редактировании сохраняем тот же id; при создании — следующий
