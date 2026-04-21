@@ -115,7 +115,7 @@ class PrometheusLogger(Observer):
         if hasattr(self, "_file") and not self._file.closed:
             self._file.close()
 
-# ─── Алерт-правило (ИСПРАВЛЕНО) ──────────────────────────────────────────────
+# ─── Алерт-правило  ──────────────────────────────────────────────
 class AlertRuleObserver(Observer):
     def __init__(self, master: tk.Tk, metric: str, threshold: float,
                  message: str, cooldown: int = 5):
@@ -134,17 +134,14 @@ class AlertRuleObserver(Observer):
         if (timestamp - self._last_triggered) < self.cooldown:
             return
         self._last_triggered = timestamp
-        # ✅ Передаём в главный поток — безопасно для Tkinter
         try:
             self.master.after(0, self._show_alert, val)
         except Exception:
-            pass  # master мог быть уничтожен
+            pass
 
     def _show_alert(self, val: float) -> None:
-        # ✅ Проверяем, жив ли master
         if not self.master or not self.master.winfo_exists():
             return
-        # ✅ Не открываем второй попап, если первый ещё жив
         if self._active_popup is not None and self._active_popup.winfo_exists():
             return
 
@@ -182,7 +179,6 @@ class AlertRuleObserver(Observer):
                   cursor="hand2",
                   command=self.dismiss).pack(pady=14)
 
-        # ✅ Закрытие крестиком тоже вызывает dismiss
         popup.protocol("WM_DELETE_WINDOW", self.dismiss)
 
     def dismiss(self) -> None:
@@ -359,7 +355,6 @@ class DashboardGUI(Observer):
         self.axes[key]     = ax
         self.lines[key]    = line
         self.canvases[key] = canvas
-        # Сохраняем fill для перерисовки
         self._fills = getattr(self, "_fills", {})
         self._fills[key] = fill
 
@@ -514,7 +509,6 @@ class DashboardGUI(Observer):
             rule = AlertRuleObserver(self.root, metric, threshold, message, cooldown=5)
             self.engine.subscribe(rule)
 
-            # ✅ При редактировании сохраняем тот же id; при создании — следующий
             alert_id = edit_id if is_edit else self.next_alert_id
             if not is_edit:
                 self.next_alert_id += 1
