@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0">
     <modelVersion>4.0.0</modelVersion>
+    
     <groupId>com.gallery</groupId>
-    <artifactId>lazy-gallery</artifactId>
+    <artifactId>shop-demo</artifactId>
     <version>1.0</version>
+    <packaging>jar</packaging>
     
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-
+    
     <dependencies>
-        <!-- Встроенная БД в памяти -->
+        <!-- H2 Database (встроенная БД в памяти) -->
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
@@ -20,7 +22,7 @@
             <scope>runtime</scope>
         </dependency>
     </dependencies>
-
+    
     <build>
         <plugins>
             <!-- Плагин для запуска через mvn exec:java -->
